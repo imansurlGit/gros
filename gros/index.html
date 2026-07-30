@@ -1,0 +1,1315 @@
+<!doctype html>
+<html lang="fr" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>
+    Moussa Gros — Site Officiel — Famille Moussa Gros
+  </title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description"
+    content="Site officiel de mémoire et de patrimoine dédié à Moussa Gros (1910-1973). Découvrez sa biographie, ses contributions à Niamey, et les valeurs de la famille Moussa Gros." />
+  <meta name="keywords"
+    content="Moussa Gros, Moussa Gros, Windiberi, Niamey, Niger, Hôtel Ténéré, SONEXCI, Sonni Ali Ber, Zabarkan, Téra, Tourikoukèye, Patrimoine Niger" />
+  <meta name="author" content="Famille Moussa Gros" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Tailwind Theme Configuration -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ivoire: {
+              DEFAULT: "#fdfbf7",
+              ombre: "#f3efe8",
+              sombre: "#e8e2d9",
+            },
+            nuit: {
+              DEFAULT: "#0a192f",
+              clair: "#162540",
+              light: "#1e3252",
+              mid: "#2a4a72",
+            },
+            or: {
+              DEFAULT: "#d4af37",
+              clair: "#e8cc73",
+              sombre: "#a8891e",
+            },
+          },
+          fontFamily: {
+            titre: ['"Playfair Display"', "Georgia", "serif"],
+            corps: ["Inter", "system-ui", "sans-serif"],
+          },
+        },
+      },
+    };
+  </script>
+</head>
+
+<body class="bg-ivoire text-nuit min-h-screen flex flex-col font-corps">
+  <!-- ================================================== -->
+  <!-- NAVIGATION FIXE (glassmorphism ivoire)              -->
+  <!-- ================================================== -->
+  <header class="fixed top-0 left-0 w-full z-50 glass-nav">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <!-- Logo / Identité -->
+      <a href="#/accueil" class="flex items-center gap-3 group">
+        <div
+          class="w-10 h-10 rounded-lg bg-nuit flex items-center justify-center shadow border border-or/30 group-hover:bg-nuit-clair transition-colors duration-300">
+          <!-- <svg
+              class="w-5 h-5 text-or"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+            >
+              <path
+                d="M4 4h4l4 12 4-12h4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <circle cx="12" cy="18" r="1.5" fill="currentColor" />
+            </svg> -->
+          <span class="w-6 h-6 text-or-clair">MG</span>
+        </div>
+        <div>
+          <span class="block text-sm font-titre font-bold tracking-widest text-nuit uppercase">Moussa Gros</span>
+          <span class="block text-[10px] uppercase tracking-[0.2em] text-nuit/50 font-corps">Famille Moussa Gros</span>
+        </div>
+      </a>
+
+      <!-- Liens desktop -->
+      <nav class="hidden lg:flex items-center gap-7">
+        <a href="#/accueil" class="nav-link text-sm">Accueil</a>
+        <a href="#/biographie" class="nav-link text-sm">Biographie</a>
+        <a href="#/oeuvres" class="nav-link text-sm">Œuvres</a>
+        <a href="#/valeurs" class="nav-link text-sm">Valeurs</a>
+        <a href="#/rue-elhadj-moussa-gros-ibrahim" class="nav-link text-sm">Rue Hommage</a>
+        <a href="#/archives" class="nav-link text-sm">Archives</a>
+        <a href="#/famille-windiberi" class="nav-link text-sm">Famille & Contacts</a>
+      </nav>
+
+      <!-- Actions droite (Livret + Hamburger) -->
+      <div class="flex items-center gap-3">
+        <button id="header-livret-btn" data-livret-trigger
+          class="hidden sm:inline-flex btn-or px-4 lg:px-5 py-2 rounded-lg text-xs whitespace-nowrap items-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+          </svg>
+          Lire le livret
+        </button>
+
+        <!-- Hamburger mobile -->
+        <button id="mobile-menu-btn" class="lg:hidden p-2 text-nuit hover:text-or transition-colors"
+          aria-label="Ouvrir le menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- TIROIR MOBILE -->
+  <div id="drawer-overlay"
+    class="fixed inset-0 bg-nuit/50 backdrop-blur-sm z-50 hidden transition-opacity duration-300"></div>
+  <div id="mobile-drawer"
+    class="drawer-mobile fixed top-0 right-0 h-full w-80 max-w-[85vw] z-50 shadow-2xl translate-x-full transition-transform duration-300 ease-in-out p-6 flex flex-col">
+    <div class="flex items-center justify-between mb-8 pb-4 border-b border-nuit/10">
+      <span class="font-titre font-bold text-nuit tracking-widest text-sm uppercase">Navigation</span>
+      <button id="mobile-close-btn" class="text-nuit/50 hover:text-nuit p-1 transition-colors" aria-label="Fermer">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+    <nav class="flex flex-col gap-1 text-base">
+      <a href="#/accueil"
+        class="mobile-nav-link text-nuit/70 hover:text-nuit font-corps font-medium py-3 border-b border-nuit/08 transition-colors">Accueil</a>
+      <a href="#/biographie"
+        class="mobile-nav-link text-nuit/70 hover:text-nuit font-corps font-medium py-3 border-b border-nuit/08 transition-colors">Biographie</a>
+      <a href="#/oeuvres"
+        class="mobile-nav-link text-nuit/70 hover:text-nuit font-corps font-medium py-3 border-b border-nuit/08 transition-colors">Œuvres
+        & Contributions</a>
+      <a href="#/valeurs"
+        class="mobile-nav-link text-nuit/70 hover:text-nuit font-corps font-medium py-3 border-b border-nuit/08 transition-colors">Valeurs
+        & Héritage</a>
+      <a href="#/rue-elhadj-moussa-gros-ibrahim"
+        class="mobile-nav-link text-nuit/70 hover:text-nuit font-corps font-medium py-3 border-b border-nuit/08 transition-colors">Rue
+        Hommage</a>
+      <a href="#/archives"
+        class="mobile-nav-link text-nuit/70 hover:text-nuit font-corps font-medium py-3 border-b border-nuit/08 transition-colors">Archives
+        & Témoignages</a>
+      <a href="#/famille-windiberi"
+        class="mobile-nav-link text-nuit/70 hover:text-nuit font-corps font-medium py-3 transition-colors">Famille &
+        Contacts</a>
+    </nav>
+    <button data-livret-trigger
+      class="btn-or w-full px-4 py-3 rounded-lg text-xs mt-6 flex items-center justify-center gap-2">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+      </svg>
+      Lire le livret
+    </button>
+    <div
+      class="mt-auto pt-6 border-t border-nuit/10 text-center text-[10px] text-nuit/40 font-corps uppercase tracking-widest">
+      © 2026 Propulsé par e-IMAN. Tous droits réservés.
+    </div>
+  </div>
+
+  <!-- ================================================== -->
+  <!-- CONTENU PRINCIPAL                                   -->
+  <!-- ================================================== -->
+  <main class="flex-grow pt-20">
+    <!-- ================================================ -->
+    <!-- 1. PAGE ACCUEIL                                   -->
+    <!-- ================================================ -->
+    <section id="accueil" class="page-section active">
+      <!-- HERO — Fond bleu nuit avec portrait -->
+      <div class="zone-sombre relative min-h-[88vh] flex items-center py-20 overflow-hidden border-b border-or/20">
+        <!-- Décoration subtile -->
+        <div
+          class="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-or/5 blur-3xl -translate-y-1/3 translate-x-1/4 pointer-events-none">
+        </div>
+        <div
+          class="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-or/4 blur-3xl translate-y-1/2 -translate-x-1/4 pointer-events-none">
+        </div>
+
+        <div
+          class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <!-- Texte hero -->
+          <div class="lg:col-span-7 flex flex-col text-center lg:text-left">
+            <span
+              class="inline-block self-center lg:self-start text-[10px] uppercase tracking-[0.22em] font-corps font-semibold text-or bg-or/10 border border-or/25 px-4 py-1.5 rounded-full mb-6">
+              Site officiel de mémoire et de patrimoine
+            </span>
+            <h1
+              class="font-titre text-ivoire text-4xl sm:text-5xl lg:text-[3.4rem] font-bold leading-[1.1] tracking-tight mb-5">
+              Moussa Gros
+            </h1>
+            <p
+              class="font-titre italic text-or-clair text-xl sm:text-2xl font-light mb-6 border-l-2 border-or/50 pl-4 text-left">
+              Bâtisseur, visionnaire, homme de paix
+            </p>
+            <p class="font-corps text-ivoire/70 text-base sm:text-lg leading-relaxed mb-10 max-w-xl">
+              Né en 1910 à Tourikoukèye, Elhadj Moussa Gros Ibrahim fut l'un
+              des pionniers de la modernisation économique de Niamey, un
+              artisan de la cohésion sociale et un patriote engagé. Ce site
+              lui est dédié, pour transmettre son histoire et ses valeurs aux
+              générations présentes et futures.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <a href="#/biographie" class="btn-or px-8 py-3.5 rounded-lg text-sm text-center">Découvrir sa vie</a>
+              <a href="#/oeuvres" class="btn-contour-blanc px-8 py-3.5 rounded-lg text-sm text-center">Ses
+                réalisations</a>
+            </div>
+          </div>
+
+          <!-- Portrait encadré -->
+          <div class="lg:col-span-5 flex justify-center">
+            <div
+              class="relative w-72 h-96 sm:w-80 sm:h-[420px] rounded-2xl overflow-hidden border-2 border-or/30 shadow-2xl bg-nuit-clair">
+              <img src="assets/elhadj_moussa_portrait.png" alt="Portrait officiel d'Moussa Gros"
+                class="photo-patrimoine w-full h-full object-cover object-top" />
+              <!-- Légende portrait -->
+              <div
+                class="absolute bottom-0 left-0 right-0 bg-nuit/80 backdrop-blur-sm px-4 py-3 text-center border-t border-or/20">
+                <p class="font-titre text-xs text-or tracking-widest">
+                  Elhadj Moussa Gros Ibrahim
+                </p>
+                <p class="font-corps text-[10px] text-ivoire/50 uppercase tracking-[0.18em] mt-0.5">
+                  1910 — 1973
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CITATION CENTRALE -->
+      <div class="max-w-4xl mx-auto px-4 py-20">
+        <div class="scroll-reveal encadre-citation p-8 sm:p-12 rounded-r-2xl shadow-sm pulse-or border">
+          <span class="block font-titre text-6xl text-or/15 select-none -mb-4">"</span>
+          <p class="font-titre italic text-lg sm:text-2xl text-nuit leading-relaxed">
+            « La vie d'un homme ne se mesure pas seulement à ce qu'il a
+            accompli, mais à ce qu'il a inspiré. Moussa Gros a
+            inspiré une ville, une génération, une Nation. »
+          </p>
+          <div class="sep-or mt-6"></div>
+          <p class="font-corps text-xs uppercase tracking-[0.18em] text-nuit/50 mt-3">
+            — Message de la Famille MOUSSA GROS
+          </p>
+        </div>
+      </div>
+
+      <!-- ACCÈS RAPIDE — 4 Cartes -->
+      <div class="bg-ivoire-ombre border-t border-nuit/08 py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-14 scroll-reveal">
+            <h2 class="font-titre text-2xl sm:text-3xl font-bold text-nuit mb-3">
+              L'œuvre d'une vie
+            </h2>
+            <div class="sep-or mx-auto"></div>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Biographie -->
+            <a href="#/biographie" class="scroll-reveal delay-1 carte-patrimoine p-6 flex flex-col h-full group">
+              <div
+                class="w-11 h-11 rounded-lg bg-nuit/05 border border-nuit/10 flex items-center justify-center text-nuit mb-5 group-hover:bg-or group-hover:text-nuit transition-colors duration-300">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+              </div>
+              <h3 class="font-titre font-bold text-nuit text-base mb-2 group-hover:text-or transition-colors">
+                Biographie
+              </h3>
+              <p class="font-corps text-sm text-nuit/60 leading-relaxed flex-grow">
+                De Tourikoukèye à Niamey, le récit harmonisé d'un autodidacte
+                de génie.
+              </p>
+              <span class="badge-or mt-4">Lire le récit →</span>
+            </a>
+
+            <!-- Œuvres -->
+            <a href="#/oeuvres" class="scroll-reveal delay-2 carte-patrimoine p-6 flex flex-col h-full group">
+              <div
+                class="w-11 h-11 rounded-lg bg-nuit/05 border border-nuit/10 flex items-center justify-center text-nuit mb-5 group-hover:bg-or group-hover:text-nuit transition-colors duration-300">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                </svg>
+              </div>
+              <h3 class="font-titre font-bold text-nuit text-base mb-2 group-hover:text-or transition-colors">
+                Œuvres & Réalisations
+              </h3>
+              <p class="font-corps text-sm text-nuit/60 leading-relaxed flex-grow">
+                Hôtel Ténéré, SONEXCI, galeries marchandes et transports
+                Berliet.
+              </p>
+              <span class="badge-or mt-4">Découvrir →</span>
+            </a>
+
+            <!-- Valeurs -->
+            <a href="#/valeurs" class="scroll-reveal delay-3 carte-patrimoine p-6 flex flex-col h-full group">
+              <div
+                class="w-11 h-11 rounded-lg bg-nuit/05 border border-nuit/10 flex items-center justify-center text-nuit mb-5 group-hover:bg-or group-hover:text-nuit transition-colors duration-300">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </div>
+              <h3 class="font-titre font-bold text-nuit text-base mb-2 group-hover:text-or transition-colors">
+                Valeurs & Héritage
+              </h3>
+              <p class="font-corps text-sm text-nuit/60 leading-relaxed flex-grow">
+                La véranda de Windiberi, la fraternité africaine et la
+                transmission du <em>windeeri</em>.
+              </p>
+              <span class="badge-or mt-4">Explorer →</span>
+            </a>
+
+            <!-- Rue -->
+            <a href="#/rue-elhadj-moussa-gros-ibrahim"
+              class="scroll-reveal delay-4 carte-patrimoine p-6 flex flex-col h-full group">
+              <div
+                class="w-11 h-11 rounded-lg bg-nuit/05 border border-nuit/10 flex items-center justify-center text-nuit mb-5 group-hover:bg-or group-hover:text-nuit transition-colors duration-300">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </div>
+              <h3 class="font-titre font-bold text-nuit text-base mb-2 group-hover:text-or transition-colors">
+                Rue Moussa Gros
+              </h3>
+              <p class="font-corps text-sm text-nuit/60 leading-relaxed flex-grow">
+                L'inauguration solennelle de juin 2026 et les remerciements
+                aux autorités de Niamey.
+              </p>
+              <span class="badge-or mt-4">Voir l'hommage →</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- INVOCATION FINALE -->
+      <div class="zone-sombre py-16 text-center border-t border-or/20">
+        <p class="font-titre italic text-lg text-or-clair max-w-2xl mx-auto px-4">
+          « Que la grâce d'Allah enveloppe son âme et que sa mémoire continue
+          d'inspirer les générations à venir. »
+        </p>
+      </div>
+    </section>
+
+    <!-- ================================================ -->
+    <!-- 2. PAGE BIOGRAPHIE                                -->
+    <!-- ================================================ -->
+    <section id="biographie" class="page-section">
+      <!-- En-tête de page -->
+      <div class="zone-sombre py-16 border-b border-or/20 text-center">
+        <div class="max-w-3xl mx-auto px-4">
+          <span class="badge-or mb-4 inline-block" style="
+                color: var(--or-clair);
+                background: var(--or-10);
+                border-color: var(--or-25);
+              ">Biographie</span>
+          <h1 class="font-titre text-ivoire text-3xl sm:text-4xl font-bold mb-4">
+            Biographie de Moussa Gros
+          </h1>
+          <p class="font-corps text-ivoire/60 text-sm sm:text-base">
+            La vie exemplaire d'un autodidacte de génie, pionnier du Niger
+            moderne.
+          </p>
+        </div>
+      </div>
+
+      <!-- Navigation timeline sticky -->
+      <div class="bg-ivoire/95 sticky top-20 z-30 border-b border-nuit/10 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex gap-2 overflow-x-auto justify-start md:justify-center">
+          <button data-timeline="all" class="timeline-nav-item active whitespace-nowrap">
+            Tous les chapitres
+          </button>
+          <button data-timeline="1" class="timeline-nav-item whitespace-nowrap">
+            1. Origines & Jeunesse
+          </button>
+          <button data-timeline="2" class="timeline-nav-item whitespace-nowrap">
+            2. Premiers Métiers
+          </button>
+          <button data-timeline="3" class="timeline-nav-item whitespace-nowrap">
+            3. Vision pour Niamey
+          </button>
+          <button data-timeline="4" class="timeline-nav-item whitespace-nowrap">
+            4. Patriotisme
+          </button>
+          <button data-timeline="5" class="timeline-nav-item whitespace-nowrap">
+            5. Héritage
+          </button>
+        </div>
+      </div>
+
+      <!-- Contenu biographie -->
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 py-16">
+        <!-- Introduction -->
+        <div class="scroll-reveal mb-12 encadre-citation py-4 px-6 rounded-r-xl">
+          <p class="font-titre italic text-nuit text-lg leading-relaxed">
+            Elhadj Moussa Gros Ibrahim, né en 1910 à Tourikoukèye dans le
+            département de Téra, est une figure emblématique de l'histoire
+            économique et sociale du Niger. Autodidacte, travailleur
+            infatigable, visionnaire et profondément attaché aux valeurs
+            songhay, il a marqué son époque par son intelligence des affaires,
+            son patriotisme et sa capacité à rassembler.
+          </p>
+        </div>
+
+        <!-- Fil de la timeline -->
+        <div class="relative border-l-2 border-or/25 ml-4 md:ml-6 pl-8 md:pl-10 space-y-10">
+          <!-- Chapitre 1 -->
+          <div id="timeline-1" class="timeline-card timeline-item scroll-reveal relative transition-all duration-500">
+            <div
+              class="timeline-dot absolute -left-[41px] md:-left-[49px] top-2 w-6 h-6 rounded-full flex items-center justify-center text-nuit text-[10px] font-bold font-corps">
+              1
+            </div>
+            <div class="carte-patrimoine p-8">
+              <span class="badge-or mb-3 inline-block">Chapitre 1 — 1910, Jeunesse</span>
+              <h2 class="font-titre text-2xl font-bold text-nuit mb-4">
+                Origines et jeunesse
+              </h2>
+              <div class="font-corps text-nuit/70 space-y-4 leading-relaxed text-sm sm:text-base">
+                <p>
+                  Issu de la communauté Songhay, il grandit dans un
+                  environnement où la dignité, l'honneur, la solidarité et le
+                  respect de la parole donnée étaient des valeurs cardinales.
+                  Sous la protection de ses deux grands frères, le vétérinaire
+                  Alzouma et Daouda Hareyban, il apprit très tôt la
+                  responsabilité et la rigueur du travail.
+                </p>
+                <p>
+                  Autodidacte, il se lança dans la vie avec une détermination
+                  remarquable, sans bénéficier d'une formation académique
+                  formelle.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chapitre 2 -->
+          <div id="timeline-2" class="timeline-card timeline-item scroll-reveal relative transition-all duration-500">
+            <div
+              class="timeline-dot absolute -left-[41px] md:-left-[49px] top-2 w-6 h-6 rounded-full flex items-center justify-center text-nuit text-[10px] font-bold font-corps">
+              2
+            </div>
+            <div class="carte-patrimoine p-8">
+              <span class="badge-or mb-3 inline-block">Chapitre 2 — Début de carrière</span>
+              <h2 class="font-titre text-2xl font-bold text-nuit mb-4">
+                Premiers métiers et ascension
+              </h2>
+              <div class="font-corps text-nuit/70 space-y-4 leading-relaxed text-sm sm:text-base">
+                <p>
+                  Son premier métier fut celui de chauffeur de gros porteurs.
+                  Il sillonna le Niger et la sous-région, parcourant
+                  les villages les plus reculés, transportant des marchandises
+                  et découvrant les réalités du terrain.
+                </p>
+                <p>
+                  De ce métier, il fit un tremplin : il devint propriétaire
+                  d'un parc de camions Berliet et fut l'un des membres
+                  fondateurs — puis premier président — du Syndicat des
+                  Transporteurs du Niger.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chapitre 3 -->
+          <div id="timeline-3" class="timeline-card timeline-item scroll-reveal relative transition-all duration-500">
+            <div
+              class="timeline-dot absolute -left-[41px] md:-left-[49px] top-2 w-6 h-6 rounded-full flex items-center justify-center text-nuit text-[10px] font-bold font-corps">
+              3
+            </div>
+            <div class="carte-patrimoine p-8">
+              <span class="badge-or mb-3 inline-block">Chapitre 3 — Bâtisseur de la capitale</span>
+              <h2 class="font-titre text-2xl font-bold text-nuit mb-4">
+                Vision pour Niamey
+              </h2>
+              <div class="font-corps text-nuit/70 space-y-4 leading-relaxed text-sm sm:text-base">
+                <p>
+                  Elhadj Moussa Gros Ibrahim rêvait d'une capitale moderne, dynamique
+                  et ouverte sur le monde. Il initia plusieurs projets
+                  structurants :
+                </p>
+                <ul class="list-disc list-inside pl-2 space-y-2">
+                  <li>
+                    <strong class="text-nuit font-semibold">L'Hôtel Ténéré</strong>, devenu un établissement de
+                    référence internationale.
+                  </li>
+                  <li>
+                    <strong class="text-nuit font-semibold">La SONEXCI</strong>, premier complexe cinématographique de
+                    Niamey, avec les
+                    salles
+                    <span class="text-or-sombre font-titre italic">Sonni Ali Ber</span>
+                    et
+                    <span class="text-or-sombre font-titre italic">Zabarkan</span>,
+                    en collaboration avec son ami <span class="text-or-sombre font-titre italic">El hadj Moukaila Sakoira</span>.
+                  </li>
+                  <li>
+                    <strong class="text-nuit font-semibold">Une galerie marchande</strong>
+                    moderne accueillant SINGER, BOTSCH et des opérateurs
+                    nigériens de premier plan.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chapitre 4 -->
+          <div id="timeline-4" class="timeline-card timeline-item scroll-reveal relative transition-all duration-500">
+            <div
+              class="timeline-dot absolute -left-[41px] md:-left-[49px] top-2 w-6 h-6 rounded-full flex items-center justify-center text-nuit text-[10px] font-bold font-corps">
+              4
+            </div>
+            <div class="carte-patrimoine p-8">
+              <span class="badge-or mb-3 inline-block">Chapitre 4 — Souveraineté & Engagements</span>
+              <h2 class="font-titre text-2xl font-bold text-nuit mb-4">
+                Engagement patriotique
+              </h2>
+              <div class="font-corps text-nuit/70 space-y-4 leading-relaxed text-sm sm:text-base">
+                <p>
+                  Son patriotisme était concret et profond. Il participa
+                  activement à la construction économique et financière du
+                  Niger souverain :
+                </p>
+                <ul class="list-disc list-inside pl-2 space-y-2">
+                  <li>
+                    Actionnaire de la Banque de Développement de la République du
+                    Niger_<strong class="text-nuit font-semibold">BDRN</strong>,
+                    devenue aujourd'hui <strong class="text-nuit font-semibold">SONIBANK</strong>,
+                  </li>
+                  <li>
+                    Actionnaire de la Société Nigérienne d'Arachide_SONARA,
+                    et grand artisan de la traite arachidière
+                  </li>
+                  <li>
+                    Soutien moral, matériel et financier actif des leaders indépendantistes.
+                  </li>
+                </ul>
+                <p>
+                  Patriote, convaincu, il permit que son seul garçon embrasse la carrière militaire
+                  pour être aujourd'hui le Général de Division MOUSSA GROS et sa cadette d'être élue
+                  dans une législature au Niger en tant que Député Nationale.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chapitre 5 -->
+          <div id="timeline-5" class="timeline-card timeline-item scroll-reveal relative transition-all duration-500">
+            <div
+              class="timeline-dot absolute -left-[41px] md:-left-[49px] top-2 w-6 h-6 rounded-full flex items-center justify-center text-nuit text-[10px] font-bold font-corps">
+              5
+            </div>
+            <div class="carte-patrimoine p-8">
+              <span class="badge-or mb-3 inline-block">Chapitre 5 — Le repos du bâtisseur</span>
+              <h2 class="font-titre text-2xl font-bold text-nuit mb-4">
+                Fin de vie et héritage
+              </h2>
+              <div class="font-corps text-nuit/70 space-y-4 leading-relaxed text-sm sm:text-base">
+                <p>
+                  Il rendit l'âme le
+                  <strong class="text-nuit font-semibold">27 mai 1973</strong>
+                  à Windiberi, sa concession familiale emblématique située en
+                  face du Grand Marché de Niamey.
+                </p>
+                <p>
+                  Sa disparition fut un deuil immense pour la capitale et la
+                  Nation, mais son héritage demeure vivant dans les valeurs de
+                  la concession Windiberi et les infrastructures qui
+                  structurent encore Niamey.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================ -->
+    <!-- 3. PAGE ŒUVRES & CONTRIBUTIONS                    -->
+    <!-- ================================================ -->
+    <section id="oeuvres" class="page-section">
+      <div class="zone-sombre py-16 border-b border-or/20 text-center">
+        <div class="max-w-3xl mx-auto px-4">
+          <span class="badge-or mb-4 inline-block" style="
+                color: var(--or-clair);
+                background: var(--or-10);
+                border-color: var(--or-25);
+              ">Réalisations</span>
+          <h1 class="font-titre text-ivoire text-3xl sm:text-4xl font-bold mb-4">
+            Œuvres majeures et contributions
+          </h1>
+          <p class="font-corps text-ivoire/60 text-sm sm:text-base">
+            La trace matérielle et l'esprit d'entreprise d'un pionnier de la
+            modernisation de Niamey.
+          </p>
+        </div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <p class="scroll-reveal font-corps text-nuit/70 text-center max-w-3xl mx-auto mb-16 leading-relaxed text-base">
+          Visionnaire et entreprenant, Elhadj Moussa Gros Ibrahim a initié et
+          financé des projets d'envergure qui ont profondément façonné le
+          paysage économique et socio-culturel de Niamey et du Niger.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+          <!-- Hôtel Ténéré -->
+          <div class="scroll-reveal delay-1 carte-patrimoine overflow-hidden flex flex-col">
+            <div class="p-8 flex-grow">
+              <span class="badge-or mb-3 inline-block">Infrastructure hôtelière</span>
+              <h3 class="font-titre text-2xl font-bold text-nuit mb-4">
+                L'Hôtel Ténéré
+              </h3>
+              <p class="font-corps text-nuit/70 text-sm leading-relaxed">
+                Elhadj Moussa Gros Ibrahim fut l'initiateur et l'investisseur à l'origine
+                de la construction de cet hôtel historique, conçu pour doter
+                Niamey d'une infrastructure d'accueil moderne et de prestige,
+                ouverte aux voyageurs d'affaires internationaux. La rue qui
+                porte aujourd'hui son nom borde directement cet hôtel,
+                réunissant symboliquement l'homme et son œuvre.
+              </p>
+            </div>
+            <div class="bg-nuit px-8 py-4 flex items-center justify-between">
+              <span class="font-corps text-xs text-ivoire/50 uppercase tracking-widest">Patrimoine touristique</span>
+              <span class="font-corps text-xs text-or/70 uppercase tracking-widest">Niamey</span>
+            </div>
+          </div>
+
+          <!-- SONEXCI -->
+          <div class="scroll-reveal delay-2 carte-patrimoine overflow-hidden flex flex-col">
+            <div class="h-44 overflow-hidden bg-nuit">
+              <img src="assets/cinema_sonni_ali_ber.png" alt="Complexe cinématographique Sonni Ali Ber & Zabarkan"
+                class="photo-patrimoine w-full h-full object-cover" />
+            </div>
+            <div class="p-8 flex-grow">
+              <span class="badge-or mb-3 inline-block">Culture & Modernisation</span>
+              <h3 class="font-titre text-2xl font-bold text-nuit mb-4">
+                SONEXCI — Cinémas Sonni Ali Ber & Zabarkan
+              </h3>
+              <p class="font-corps text-nuit/70 text-sm leading-relaxed">
+                En partenariat avec son ami Elhadj Mounkaila Sakoira, il fonda
+                la SONEXCI, dotant ainsi la capitale de ses deux premières
+                grandes salles de cinéma modernes. Le choix des noms
+                <em class="font-titre text-or-sombre">Sonni Ali Ber</em> et
+                <em class="font-titre text-or-sombre">Zabarkan</em> témoigne
+                de sa conscience identitaire et de sa fierté panafricaine.
+              </p>
+            </div>
+            <div class="bg-nuit px-8 py-4 flex items-center justify-between">
+              <span class="font-corps text-xs text-ivoire/50 uppercase tracking-widest">Avec Elhadj Mounkaila
+                Sakoira</span>
+              <span class="font-corps text-xs text-or/70 uppercase tracking-widest">Niamey</span>
+            </div>
+          </div>
+
+          <!-- Galerie Marchande -->
+          <div class="scroll-reveal delay-1 carte-patrimoine overflow-hidden flex flex-col">
+            <div class="p-8 flex-grow">
+              <span class="badge-or mb-3 inline-block">Immobilier commercial</span>
+              <h3 class="font-titre text-2xl font-bold text-nuit mb-4">
+                La Galerie Marchande
+              </h3>
+              <p class="font-corps text-nuit/70 text-sm leading-relaxed">
+                Précurseur de l'immobilier d'affaires, il conçut au cœur de
+                Niamey un ensemble de galeries modernes. Cet espace hébergea
+                les premières boutiques de firmes internationales comme
+                <strong class="text-nuit font-semibold">SINGER</strong> et
+                <strong class="text-nuit font-semibold">BOTSCH</strong>, ainsi
+                que des commerçants nigériens de premier plan.
+              </p>
+            </div>
+            <div class="bg-nuit px-8 py-4 flex items-center justify-between">
+              <span class="font-corps text-xs text-ivoire/50 uppercase tracking-widest">SINGER, BOTSCH</span>
+              <span class="font-corps text-xs text-or/70 uppercase tracking-widest">Niamey</span>
+            </div>
+          </div>
+
+          <!-- Transport & Commerce -->
+          <div class="scroll-reveal delay-2 carte-patrimoine overflow-hidden flex flex-col">
+            <div class="p-8 flex-grow">
+              <span class="badge-or mb-3 inline-block">Logistique & Réseaux</span>
+              <h3 class="font-titre text-2xl font-bold text-nuit mb-4">
+                Transport & Commerce
+              </h3>
+              <p class="font-corps text-nuit/70 text-sm leading-relaxed">
+                Véritable pivot logistique de la sous-région, il monta un
+                important parc de camions Berliet. Il organisa le commerce
+                général, la friperie et la collecte d'arachide. Ses réseaux
+                d'affaires s'étendaient de Niamey à Bamako et d'Abidjan à Kano et Lagos.
+              </p>
+            </div>
+            <div class="bg-nuit px-8 py-4 flex items-center justify-between">
+              <span class="font-corps text-xs text-ivoire/50 uppercase tracking-widest">Camions Berliet</span>
+              <span class="font-corps text-xs text-or/70 uppercase tracking-widest">Afrique de l'Ouest</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Patriotisme économique -->
+        <div class="scroll-reveal carte-patrimoine p-8 sm:p-12">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-8">
+              <span class="badge-or mb-3 inline-block">Souveraineté nationale</span>
+              <h3 class="font-titre text-3xl font-bold text-nuit mb-5">
+                Le Patriotisme Économique
+              </h3>
+              <div class="font-corps text-nuit/70 space-y-4 leading-relaxed text-sm sm:text-base">
+                <p>
+                  Au lendemain de l'indépendance du Niger en 1960, Elhadj Moussa Gros Ibrahim
+                  a mis ses ressources au service du nouvel État
+                  en tant qu'actionnaire fondateur de la
+                  <strong class="text-nuit font-semibold">BDRN</strong>, outil
+                  de financement primordial.
+                </p>
+                <p>
+                  Il fut également un actionnaire de la
+                  <strong class="text-nuit font-semibold">SONARA</strong>, au
+                  cœur de la filière arachidière nationale. Sa contribution a
+                  été décisive pour asseoir la structuration de l'économie
+                  souveraine nigérienne.
+                </p>
+              </div>
+            </div>
+            <div class="lg:col-span-4 border-t lg:border-t-0 lg:border-l border-nuit/10 pt-6 lg:pt-0 lg:pl-8 space-y-3">
+              <h4 class="font-titre text-sm font-bold text-nuit mb-2 uppercase tracking-widest">
+                PRISES DE PARTICIPATION AUX ENTREPRISES NATIONALES
+              </h4>
+              <div class="carte-ivoire p-4">
+                <p class="font-titre font-bold text-nuit text-sm">BDRN</p>
+                <p class="font-corps text-xs text-nuit/50 mt-0.5">
+                  Banque de Développement du Niger
+                </p>
+              </div>
+              <div class="carte-ivoire p-4">
+                <p class="font-titre font-bold text-nuit text-sm">SONARA</p>
+                <p class="font-corps text-xs text-nuit/50 mt-0.5">
+                  Commercialisation de l'Arachide
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================ -->
+    <!-- 4. PAGE VALEURS & HÉRITAGE                        -->
+    <!-- ================================================ -->
+    <section id="valeurs" class="page-section">
+      <div class="zone-sombre py-16 border-b border-or/20 text-center">
+        <div class="max-w-3xl mx-auto px-4">
+          <span class="badge-or mb-4 inline-block" style="
+                color: var(--or-clair);
+                background: var(--or-10);
+                border-color: var(--or-25);
+              ">Héritage</span>
+          <h1 class="font-titre text-ivoire text-3xl sm:text-4xl font-bold mb-4">
+            Les valeurs d'un homme, l'héritage d'une vie
+          </h1>
+          <p class="font-corps text-ivoire/60 text-sm sm:text-base">
+            La grandeur d'âme, la cohésion sociale et la transmission du
+            <em>windeeri</em>.
+          </p>
+        </div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <!-- Windiberi concession image bloc -->
+        <div class="scroll-reveal carte-patrimoine overflow-hidden mb-16">
+          <div class="grid grid-cols-1 lg:grid-cols-12">
+            <div class="lg:col-span-6 h-64 lg:h-auto overflow-hidden bg-nuit">
+              <img src="assets/windiberi_concession.png" alt="La concession Windiberi en face du Grand Marché de Niamey"
+                class="photo-patrimoine w-full h-full object-cover" />
+            </div>
+            <div class="lg:col-span-6 p-8 sm:p-12 flex flex-col justify-center">
+              <span class="badge-or mb-4 inline-block">La demeure familiale</span>
+              <h3 class="font-titre text-2xl sm:text-3xl font-bold text-nuit mb-4">
+                Windiberi — La maison de tous
+              </h3>
+              <p class="font-corps text-nuit/70 text-sm sm:text-base leading-relaxed mb-6">
+                Windiberi, la concession historique en face du Grand Marché,
+                était un creuset de valeurs africaines. Sous l'égide d'Elhadj
+                Elhadj Moussa Gros Ibrahim, elle s'est érigée en symbole de solidarité,
+                d'ouverture et de générosité. On y accueillait
+                inconditionnellement les voyageurs, les caravaniers, les
+                enfants des autres contrées dans une ambiance fraternelle.
+              </p>
+              <div class="sep-or"></div>
+              <p class="font-corps text-xs uppercase tracking-[0.18em] text-nuit/40 mt-3">
+                Le foyer de la cohésion sociale
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Trois valeurs -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="scroll-reveal delay-1 carte-patrimoine p-8 flex flex-col">
+            <div class="w-11 h-11 rounded-lg bg-nuit flex items-center justify-center text-or mb-6">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10" stroke-width="1.8" />
+                <path d="M12 8v4l3 3" stroke-linecap="round" stroke-width="1.8" />
+              </svg>
+            </div>
+            <h4 class="font-titre text-xl font-bold text-nuit mb-3">
+              Sagesse et paix
+            </h4>
+            <p class="font-corps text-sm text-nuit/65 leading-relaxed">
+              La véranda de Windiberi était un haut lieu de dialogue, de
+              réconciliation et de médiation sociale. Notabilités, commerçants
+              et hauts cadres de tous bords s'y retrouvaient. Loin de la
+              politique partisane, Elhadj Moussa Gros Ibrahim y cultivait la paix, l'unité et
+              la cohésion nationale.
+            </p>
+          </div>
+
+          <div class="scroll-reveal delay-2 carte-patrimoine p-8 flex flex-col">
+            <div class="w-11 h-11 rounded-lg bg-nuit flex items-center justify-center text-or mb-6">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                  d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064" />
+                <circle cx="12" cy="12" r="9" stroke-width="1.8" />
+              </svg>
+            </div>
+            <h4 class="font-titre text-xl font-bold text-nuit mb-3">
+              Fraternité africaine
+            </h4>
+            <p class="font-corps text-sm text-nuit/65 leading-relaxed">
+              Ses réseaux s'étendaient bien au-delà des frontières du Niger :
+              marchands de cola de Côte d'Ivoire, commerçants du Nigéria,
+              caravaniers touaregs. Il incarnait dans son quotidien un
+              panafricanisme économique et culturel vivant.
+            </p>
+          </div>
+
+          <div class="scroll-reveal delay-3 carte-patrimoine p-8 flex flex-col">
+            <div class="w-11 h-11 rounded-lg bg-nuit flex items-center justify-center text-or mb-6">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                  d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+              </svg>
+            </div>
+            <h4 class="font-titre text-xl font-bold text-nuit mb-3">
+              Transmission
+            </h4>
+            <p class="font-corps text-sm text-nuit/65 leading-relaxed">
+              Il a légué à ses descendants les valeurs cardinales du
+              <strong class="text-nuit font-semibold font-titre italic">windeeri</strong>
+              — l'esprit de la Grande Famille Moussa Gros. Cet héritage moral
+              reste une boussole pour la famille, soucieuse de le transmettre
+              aux générations futures.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================ -->
+    <!-- 5. PAGE RUE Moussa Gros            -->
+    <!-- ================================================ -->
+    <section id="rue" class="page-section">
+      <div class="zone-sombre py-16 border-b border-or/20 text-center">
+        <div class="max-w-3xl mx-auto px-4">
+          <span class="badge-or mb-4 inline-block" style="
+                color: var(--or-clair);
+                background: var(--or-10);
+                border-color: var(--or-25);
+              ">Hommage urbain</span>
+          <h1 class="font-titre text-ivoire text-3xl sm:text-4xl font-bold mb-4">
+            La Rue Moussa Gros
+          </h1>
+          <p class="font-corps text-ivoire/60 text-sm sm:text-base">
+            La reconnaissance solennelle de la Ville de Niamey envers l'un de
+            ses grands bâtisseurs.
+          </p>
+        </div>
+      </div>
+
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 py-16">
+        <!-- Plaque simulée + Contexte -->
+        <div class="scroll-reveal carte-patrimoine p-8 sm:p-10 mb-12">
+          <span class="badge-or mb-3 inline-block">La consécration de la mémoire</span>
+          <h2 class="font-titre text-2xl font-bold text-nuit mb-4">
+            Un hommage éternel
+          </h2>
+          <p class="font-corps text-nuit/70 text-sm sm:text-base leading-relaxed mb-8">
+            La commission chargée de baptiser les boulevards, les avenues, les
+            rues et les places de la ville de Niamey créée par arrêté <strong class="text-nuit font-semibold">n°17/MJC/A/S/SG/DGCA</strong> du <strong class="text-nuit font-semibold">25 janvier 2024</strong>.</br>
+            Composée du Ministère en charge de la culture, de celui en charge de l'urbanisme, de la Ville de Niamey,
+            de l'Institut National de la Statistique (INS) et de l'Institut de Recherches en Sciences Humaines (IRSH),
+            en collaboration avec des universitaires concernés.</br>
+            C'est elle qui a retenu le nom de <strong class="text-nuit font-semibold">MOUSSA GROS</strong> pour cette reconnaissance et le choix de la rue au titre de l'hommage
+            à l'homme et à sa contribution.
+            Le <strong class="text-nuit font-semibold">23 Août 2026</strong>, a consacré cette dignité et le baptême de la Rue désormais <strong class="text-nuit font-semibold">MOUSSA GROS</strong>, le Bâtisseur.
+
+          </p>
+          <!-- Plaque de rue simulée -->
+          <div class="plaque-rue max-w-sm mx-auto py-6 px-8">
+            <p class="font-corps text-[10px] uppercase tracking-[0.22em] text-ivoire/50 mb-1">
+              Ville de Niamey
+            </p>
+            <p class="font-titre text-2xl font-bold text-ivoire uppercase tracking-wide">
+              RUE
+            </p>
+            <p class="font-titre text-xl font-bold text-or mt-1">
+              Moussa Gros
+            </p>
+            <p class="font-corps text-[10px] text-ivoire/40 mt-2 uppercase tracking-widest">
+              Bâtisseur & Visionnaire · 1910 – 1973
+            </p>
+          </div>
+        </div>
+
+        <!-- Remerciements officiels -->
+        <div class="scroll-reveal encadre-citation p-8 rounded-r-xl mb-12 border">
+          <span class="badge-or mb-4 inline-block">Remerciements officiels</span>
+          <div class="font-corps text-nuit/70 text-sm sm:text-base leading-relaxed space-y-3">
+            <p>
+              La Famille Moussa gros exprime sa profonde et sincère gratitude :
+            </p>
+            <ul class="list-disc list-inside pl-2 space-y-2">
+              <li>
+                Aux autorités du Niger pour le devoir de mémoire qu'elles ont
+                initié et réalisé au nom de la souveraineté et du patriotisme
+              </li>
+              <li>
+                Aux autorités de la Ville de Niamey pour toutes les facilitations
+                relatives à la cérémonie du Baptême
+              </li>
+              <li>
+                A tous les nigériens pour leurs valeurs humaines et sociales.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Portée symbolique & Lien Ténéré -->
+        <div class="scroll-reveal grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="carte-ivoire p-8">
+            <h4 class="font-titre text-lg font-bold text-nuit mb-3">
+              Portée symbolique
+            </h4>
+            <p class="font-corps text-sm text-nuit/65 leading-relaxed">
+              Le baptême de cette rue est un rappel permanent destiné aux
+              citoyens et à la jeunesse de Niamey. Il témoigne que la Nation
+              sait honorer avec reconnaissance ceux qui l'ont servie avec
+              courage, vision et intégrité patriotique.
+            </p>
+          </div>
+          <div class="carte-ivoire p-8">
+            <h4 class="font-titre text-lg font-bold text-nuit mb-3">
+              Le lien avec l'Hôtel Ténéré
+            </h4>
+            <p class="font-corps text-sm text-nuit/65 leading-relaxed">
+              La rue est mitoyenne et attenante à l'emblématique Hôtel Ténéré.
+              Par cette configuration géographique, l'histoire réunit
+              symboliquement le bâtisseur et son œuvre la plus emblématique au
+              cœur de la cité.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================ -->
+    <!-- 6. PAGE ARCHIVES & TÉMOIGNAGES                    -->
+    <!-- ================================================ -->
+    <section id="archives" class="page-section">
+      <div class="zone-sombre py-16 border-b border-or/20 text-center">
+        <div class="max-w-5xl mx-auto px-4 relative">
+          <span class="badge-or mb-4 inline-block" style="
+                color: var(--or-clair);
+                background: var(--or-10);
+                border-color: var(--or-25);
+              ">Mémoire</span>
+          <h1 class="font-titre text-ivoire text-3xl sm:text-4xl font-bold text-center sm:max-w-2xl sm:mx-auto mb-4">
+            Archives, documents et témoignages
+          </h1>
+          <p class="font-corps text-ivoire/60 text-sm sm:text-base text-center">
+            La mémoire documentée d'une vie d'engagement au service de la
+            communauté.
+          </p>
+        </div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <!-- Filtres archives -->
+        <div class="flex justify-center gap-3 mb-12 flex-wrap">
+          <button data-filter="photos" class="filtre-archives actif" id="filtre-photos">
+            Photos
+          </button>
+          <button data-filter="documents" class="filtre-archives" id="filtre-docs">
+            Documents
+          </button>
+        </div>
+
+        <!-- Grille d'archives (rendue dynamiquement depuis db.json) -->
+        <div id="archives-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+          <!-- Rendu par app.js -->
+        </div>
+
+        <!-- TÉMOIGNAGES — Livre d'or -->
+        <div class="border-t border-nuit/10 pt-16">
+          <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12 scroll-reveal">
+              <h3 class="font-titre text-3xl font-bold text-nuit mb-2">
+                Témoignages & Hommages
+              </h3>
+              <p class="font-corps text-sm text-nuit/50">
+                Ce que la famille, les amis et les collaborateurs retiennent
+                de l'homme.
+              </p>
+              <div class="sep-or mx-auto mt-4"></div>
+            </div>
+
+            <!-- Liste dynamique -->
+            <div id="testimonials-list" class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+              <!-- Rendu par app.js (carousel 2×2) -->
+            </div>
+
+            <!-- Formulaire hommage -->
+            <div class="scroll-reveal carte-patrimoine p-8 max-w-2xl mx-auto">
+              <h4 class="font-titre font-bold text-lg text-nuit mb-1">
+                Laisser un hommage
+              </h4>
+              <p class="font-corps text-xs text-nuit/50 mb-6">
+                Partagez votre souvenir ou transmettez un message de paix.
+              </p>
+
+              <div id="testimonial-success" class="hidden notif-succes mb-6 flex items-start gap-3">
+                <svg class="w-5 h-5 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span class="font-corps text-sm">Votre hommage a été enregistré.</span>
+              </div>
+
+              <form id="testimonial-form" class="space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label for="test-name"
+                      class="block font-corps text-xs font-semibold text-nuit/60 uppercase tracking-wider mb-1.5">Nom
+                      complet *</label>
+                    <input type="text" id="test-name" required placeholder="Ex : Elhadj" class="champ-form" />
+                  </div>
+                  <div>
+                    <label for="test-relation"
+                      class="block font-corps text-xs font-semibold text-nuit/60 uppercase tracking-wider mb-1.5">Qualité
+                      / Relation</label>
+                    <input type="text" id="test-relation" placeholder="Ex : Ami de la famille" class="champ-form" />
+                  </div>
+                </div>
+                <div>
+                  <label for="test-content"
+                    class="block font-corps text-xs font-semibold text-nuit/60 uppercase tracking-wider mb-1.5">Votre
+                    hommage *</label>
+                  <textarea id="test-content" rows="4" required placeholder="Que retiendrez-vous d'Elhadj Moussa Gros Ibrahim ?"
+                    class="champ-form resize-none"></textarea>
+                </div>
+                <button type="submit" class="btn-or px-6 py-3 rounded-lg text-sm">
+                  Soumettre
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================ -->
+    <!-- 7. PAGE FAMILLE Moussa Gros & CONTACTS              -->
+    <!-- ================================================ -->
+    <section id="famille" class="page-section">
+      <div class="zone-sombre py-16 border-b border-or/20 text-center">
+        <div class="max-w-3xl mx-auto px-4">
+          <span class="badge-or mb-4 inline-block" style="
+                color: var(--or-clair);
+                background: var(--or-10);
+                border-color: var(--or-25);
+              ">La Famille</span>
+          <h1 class="font-titre text-ivoire text-3xl sm:text-4xl font-bold mb-4">
+            Famille Moussa Gros — Gardienne de la mémoire
+          </h1>
+          <p class="font-corps text-ivoire/60 text-sm sm:text-base">
+            La transmission d'un patrimoine moral commun aux générations
+            futures.
+          </p>
+        </div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          <!-- Présentation -->
+          <div class="lg:col-span-6 flex flex-col justify-center scroll-reveal">
+            <span class="badge-or mb-4 inline-block">La grande famille</span>
+            <h2 class="font-titre text-3xl font-bold text-nuit mb-6">
+              Un engagement familial et moral
+            </h2>
+            <div class="font-corps text-nuit/70 space-y-4 leading-relaxed text-sm sm:text-base">
+              <p>
+                La Famille Moussa Gros est fière de porter l'héritage
+                intellectuel, moral et spirituel d'Elhadj Moussa Gros Ibrahim.
+                En tant que gardienne fidèle de sa mémoire, elle s'engage à
+                documenter son parcours et à en diffuser les enseignements.
+              </p>
+              <p>
+                Cet espace se veut dynamique, ouvert à tous ceux qui
+                souhaitent contribuer à faire vivre l'histoire de ce
+                bâtisseur. Notre devoir est de transmettre aux nouvelles
+                générations ses valeurs de solidarité, d'ouverture, d'amour du
+                pays et d'intégrité dans le travail.
+              </p>
+            </div>
+          </div>
+
+          <!-- Formulaire de contact -->
+          <div class="lg:col-span-6 scroll-reveal">
+            <div class="carte-patrimoine p-8">
+              <h3 class="font-titre font-bold text-xl text-nuit mb-1">
+                Formulaire de contact
+              </h3>
+              <p class="font-corps text-xs text-nuit/50 mb-6">
+                Pour toute information, contribution ou demande de
+                renseignements.
+              </p>
+
+              <div id="contact-success" class="hidden notif-succes mb-6 flex items-start gap-3">
+                <svg class="w-5 h-5 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span class="font-corps text-sm">Message transmis</span>
+              </div>
+
+              <form id="contact-form" class="space-y-4">
+                <div>
+                  <label for="contact-name"
+                    class="block font-corps text-xs font-semibold text-nuit/60 uppercase tracking-wider mb-1.5">Nom
+                    complet *</label>
+                  <input type="text" id="contact-name" required placeholder="Ex : Elhadj"
+                    class="champ-form" />
+                </div>
+                <div>
+                  <label for="contact-email"
+                    class="block font-corps text-xs font-semibold text-nuit/60 uppercase tracking-wider mb-1.5">Adresse
+                    email *</label>
+                  <input type="email" id="contact-email" required placeholder="Ex : email@exemple.com"
+                    class="champ-form" />
+                </div>
+                <div>
+                  <label for="contact-subject"
+                    class="block font-corps text-xs font-semibold text-nuit/60 uppercase tracking-wider mb-1.5">Sujet</label>
+                  <input type="text" id="contact-subject" placeholder="Ex : Contribution d'archives"
+                    class="champ-form" />
+                </div>
+                <div>
+                  <label for="contact-message"
+                    class="block font-corps text-xs font-semibold text-nuit/60 uppercase tracking-wider mb-1.5">Message
+                    *</label>
+                  <textarea id="contact-message" rows="4" required placeholder="Écrivez votre message…"
+                    class="champ-form resize-none"></textarea>
+                </div>
+                <button type="submit" class="btn-or w-full py-3.5 rounded-lg text-sm">
+                  Envoyer le message
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Infos de contact -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 border-t border-nuit/10 pt-12 scroll-reveal">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-lg bg-nuit flex items-center justify-center text-or flex-shrink-0">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <div>
+              <h4 class="font-titre text-sm font-bold text-nuit mb-1">
+                Email officiel
+              </h4>
+              <a href="mailto:imanagence@gmail.com"
+                class="font-corps text-xs text-or-sombre hover:underline">imanagence@gmail.com</a>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-lg bg-nuit flex items-center justify-center text-or flex-shrink-0">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+            </div>
+            <div>
+              <h4 class="font-titre text-sm font-bold text-nuit mb-1">
+                Windiberi Concession
+              </h4>
+              <p class="font-corps text-xs text-nuit/50">
+                En face du Grand Marché, Niamey, République du Niger
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-lg bg-nuit flex items-center justify-center text-or flex-shrink-0">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+            </div>
+            <div>
+              <h4 class="font-titre text-sm font-bold text-nuit mb-1">
+                Mentions légales
+              </h4>
+              <button onclick="
+                    alert(
+                      'Mentions légales',
+                    )
+                  " class="font-corps text-xs text-or-sombre hover:underline text-left cursor-pointer">
+                Consulter
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================================================== -->
+  <!-- PIED DE PAGE                                        -->
+  <!-- ================================================== -->
+  <footer class="zone-sombre border-t border-or/20 py-14">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <!-- Identité -->
+        <div class="md:col-span-2">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-8 h-8 rounded bg-or flex items-center justify-center text-nuit font-titre font-black text-sm">
+              M
+            </div>
+            <span class="font-titre text-ivoire tracking-widest uppercase font-bold text-sm">Famille Moussa Gros</span>
+          </div>
+          <p class="font-corps text-xs text-ivoire/50 leading-relaxed max-w-sm">
+            Espace dédié à la préservation de la mémoire, de l'œuvre et des
+            valeurs d'Elhadj Moussa Gros Ibrahim (1910 — 1973).
+          </p>
+        </div>
+
+        <!-- Plan du site -->
+        <div>
+          <h4 class="font-titre font-bold text-xs uppercase tracking-wider text-or mb-4">
+            Plan du site
+          </h4>
+          <ul class="space-y-2 text-xs font-corps text-ivoire/50">
+            <li>
+              <a href="#/accueil" class="hover:text-or transition-colors">Accueil</a>
+            </li>
+            <li>
+              <a href="#/biographie" class="hover:text-or transition-colors">Biographie complète</a>
+            </li>
+            <li>
+              <a href="#/oeuvres" class="hover:text-or transition-colors">Œuvres & Réalisations</a>
+            </li>
+            <li>
+              <a href="#/valeurs" class="hover:text-or transition-colors">Valeurs & Héritage</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Ressources -->
+        <div>
+          <h4 class="font-titre font-bold text-xs uppercase tracking-wider text-or mb-4">
+            Ressources
+          </h4>
+          <ul class="space-y-2 text-xs font-corps text-ivoire/50">
+            <li>
+              <a href="#/rue-elhadj-moussa-gros-ibrahim" class="hover:text-or transition-colors">La Rue Hommage</a>
+            </li>
+            <li>
+              <a href="#/archives" class="hover:text-or transition-colors">Photos & Témoignages</a>
+            </li>
+            <li>
+              <a href="#/famille-windiberi" class="hover:text-or transition-colors">Contact famille</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div
+        class="border-t border-ivoire/08 mt-12 pt-6 flex flex-col sm:flex-row justify-between items-center text-[10px] font-corps text-ivoire/30 uppercase tracking-widest">
+        <p class="mb-3 sm:mb-0">
+          © 2026 Propulsé par e-IMAN. Tous droits réservés.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script applicatif -->
+  <script src="app.js"></script>
+</body>
+
+</html>

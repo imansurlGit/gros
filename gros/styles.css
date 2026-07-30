@@ -1,0 +1,554 @@
+/* =======================================================
+   Site Officiel Moussa Gros — Famille Moussa Gros
+   Feuille de styles principale — Design Premium & Institutionnel
+   ======================================================= */
+
+/* Polices : Playfair Display (titres) + Inter (corps) */
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap");
+
+/* -------------------------------------------------------
+   VARIABLES GLOBALES — Palette Institutionnelle
+   ------------------------------------------------------- */
+:root {
+  /* Fond principal Ivoire */
+  --ivoire: #fdfbf7;
+  --ivoire-ombre: #f3efe8;
+  --ivoire-sombre: #e8e2d9;
+
+  /* Texte & zones sombres — Bleu Nuit */
+  --bleu-nuit: #0a192f;
+  --bleu-nuit-80: rgba(10, 25, 47, 0.8);
+  --bleu-nuit-60: rgba(10, 25, 47, 0.6);
+  --bleu-nuit-20: rgba(10, 25, 47, 0.12);
+  --bleu-nuit-clair: #162540;
+  --bleu-nuit-light: #1e3252;
+
+  /* Accent — Or Champagne */
+  --or: #d4af37;
+  --or-clair: #e8cc73;
+  --or-sombre: #a8891e;
+  --or-10: rgba(212, 175, 55, 0.1);
+  --or-25: rgba(212, 175, 55, 0.25);
+  --or-50: rgba(212, 175, 55, 0.5);
+
+  /* Typographie */
+  --font-titres: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-corps: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+/* -------------------------------------------------------
+   SCROLLBAR PERSONNALISÉE
+   ------------------------------------------------------- */
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: var(--ivoire-sombre);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--or);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--or-sombre);
+}
+
+/* -------------------------------------------------------
+   BASE GLOBALE
+   ------------------------------------------------------- */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-corps);
+  background-color: var(--ivoire);
+  color: var(--bleu-nuit);
+  overflow-x: hidden;
+}
+
+/* Sélection de texte */
+::selection {
+  background-color: var(--or);
+  color: var(--bleu-nuit);
+}
+
+/* -------------------------------------------------------
+   TYPOGRAPHIE — Playfair Display pour tous les titres
+   ------------------------------------------------------- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-titre {
+  font-family: var(--font-titres);
+  color: var(--bleu-nuit);
+}
+
+/* -------------------------------------------------------
+   NAVIGATION — Glassmorphism sur fond ivoire
+   ------------------------------------------------------- */
+.glass-nav {
+  background: rgba(253, 251, 247, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--or-25);
+}
+
+/* Liens de navigation */
+.nav-link {
+  position: relative;
+  font-family: var(--font-corps);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--bleu-nuit);
+  transition: color 0.3s ease;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--or);
+  transition: width 0.35s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--or-sombre) !important;
+}
+
+/* -------------------------------------------------------
+   CARTES — Fond ivoire ombré, bordure or subtile
+   ------------------------------------------------------- */
+.carte-patrimoine {
+  background: #ffffff;
+  border: 1px solid var(--or-25);
+  border-radius: 0.75rem;
+  transition:
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    transform 0.35s ease;
+}
+
+.carte-patrimoine:hover {
+  border-color: var(--or-50);
+  box-shadow:
+    0 12px 40px -10px rgba(212, 175, 55, 0.18),
+    0 4px 16px -4px rgba(10, 25, 47, 0.08);
+  transform: translateY(-3px);
+}
+
+/* Carte légèrement teintée ivoire */
+.carte-ivoire {
+  background: var(--ivoire);
+  border: 1px solid var(--or-25);
+  border-radius: 0.75rem;
+  transition:
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    transform 0.35s ease;
+}
+
+.carte-ivoire:hover {
+  border-color: var(--or-50);
+  box-shadow: 0 12px 40px -10px rgba(212, 175, 55, 0.16);
+}
+
+/* -------------------------------------------------------
+   ZONES SOMBRES (headers, footer, blocs en bleu nuit)
+   ------------------------------------------------------- */
+.zone-sombre {
+  background-color: var(--bleu-nuit);
+  color: var(--ivoire);
+}
+
+.zone-sombre h1,
+.zone-sombre h2,
+.zone-sombre h3,
+.zone-sombre h4 {
+  color: var(--ivoire);
+}
+
+.zone-sombre-clair {
+  background-color: var(--bleu-nuit-clair);
+  color: var(--ivoire);
+}
+
+/* -------------------------------------------------------
+   ENCADRÉ CITATION — Fil or à gauche
+   ------------------------------------------------------- */
+.encadre-citation {
+  background: var(--ivoire);
+  border-left: 4px solid var(--or);
+  border-top: 1px solid var(--or-25);
+  border-right: 1px solid var(--or-25);
+  border-bottom: 1px solid var(--or-25);
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+
+/* -------------------------------------------------------
+   BOUTONS
+   ------------------------------------------------------- */
+.btn-or {
+  background-color: var(--or);
+  color: var(--bleu-nuit);
+  font-family: var(--font-corps);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  border: 1px solid transparent;
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.2s ease;
+}
+
+.btn-or:hover {
+  background-color: var(--or-sombre);
+  box-shadow: 0 4px 20px var(--or-50);
+  transform: translateY(-1px);
+}
+
+.btn-contour {
+  background-color: transparent;
+  color: var(--bleu-nuit);
+  border: 1px solid var(--or-50);
+  font-family: var(--font-corps);
+  font-weight: 600;
+  transition:
+    border-color 0.3s ease,
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.btn-contour:hover {
+  border-color: var(--or);
+  background-color: var(--or-10);
+  color: var(--or-sombre);
+}
+
+/* Variante blanche pour zones sombres */
+.btn-contour-blanc {
+  background-color: transparent;
+  color: var(--ivoire);
+  border: 1px solid rgba(253, 251, 247, 0.35);
+  font-family: var(--font-corps);
+  font-weight: 600;
+  transition:
+    border-color 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.btn-contour-blanc:hover {
+  border-color: var(--or);
+  background-color: var(--or-10);
+  color: var(--or-clair);
+}
+
+/* -------------------------------------------------------
+   GALERIE — Noir & Blanc → Couleur au survol
+   ------------------------------------------------------- */
+.photo-patrimoine {
+  filter: grayscale(100%) contrast(95%) brightness(95%);
+  transition:
+    filter 0.75s ease,
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.photo-patrimoine:hover {
+  filter: grayscale(0%) contrast(100%) brightness(100%);
+  transform: scale(1.03);
+}
+
+/* -------------------------------------------------------
+   TIMELINE — Biographie
+   ------------------------------------------------------- */
+.timeline-dot {
+  background-color: var(--or);
+  border: 3px solid var(--ivoire);
+  box-shadow: 0 0 0 3px var(--or-50);
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+.timeline-item:hover .timeline-dot {
+  box-shadow: 0 0 0 5px var(--or-50);
+  transform: scale(1.1);
+}
+
+.timeline-nav-item {
+  font-family: var(--font-corps);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  background: var(--ivoire);
+  color: var(--bleu-nuit);
+  border: 1px solid var(--bleu-nuit-20);
+  border-radius: 9999px;
+  padding: 0.45rem 1rem;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.2s ease;
+}
+
+.timeline-nav-item:hover {
+  border-color: var(--or);
+  background-color: var(--or-10);
+}
+
+.timeline-nav-item.active {
+  background-color: var(--or);
+  color: var(--bleu-nuit);
+  border-color: var(--or);
+  font-weight: 700;
+  transform: scale(1.04);
+  box-shadow: 0 2px 12px var(--or-50);
+}
+
+/* -------------------------------------------------------
+   FILTRES ARCHIVES
+   ------------------------------------------------------- */
+.filtre-archives {
+  font-family: var(--font-corps);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  background: var(--ivoire);
+  color: var(--bleu-nuit);
+  border: 1px solid var(--bleu-nuit-20);
+  border-radius: 9999px;
+  padding: 0.45rem 1.2rem;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.filtre-archives:hover {
+  border-color: var(--or);
+}
+
+.filtre-archives.actif {
+  background-color: var(--or);
+  color: var(--bleu-nuit);
+  border-color: var(--or);
+  font-weight: 700;
+}
+
+/* -------------------------------------------------------
+   SÉPARATEUR OR
+   ------------------------------------------------------- */
+.sep-or {
+  width: 3.5rem;
+  height: 2px;
+  background: var(--or);
+  border-radius: 2px;
+}
+
+/* -------------------------------------------------------
+   PAGES — Transitions & Routeur SPA
+   ------------------------------------------------------- */
+.page-section {
+  display: none;
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.55s ease-out,
+    transform 0.55s ease-out;
+}
+
+.page-section.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* -------------------------------------------------------
+   SCROLL FADE-IN — Animation au défilement
+   ------------------------------------------------------- */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.75s ease-out,
+    transform 0.75s ease-out;
+}
+
+.scroll-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Délais en cascade pour les grilles */
+.scroll-reveal.delay-1 {
+  transition-delay: 0.1s;
+}
+.scroll-reveal.delay-2 {
+  transition-delay: 0.2s;
+}
+.scroll-reveal.delay-3 {
+  transition-delay: 0.3s;
+}
+.scroll-reveal.delay-4 {
+  transition-delay: 0.4s;
+}
+
+/* -------------------------------------------------------
+   ANIMATION — Pulsation bordure or
+   ------------------------------------------------------- */
+@keyframes pulseOr {
+  0%,
+  100% {
+    border-color: var(--or-25);
+  }
+  50% {
+    border-color: var(--or-50);
+  }
+}
+
+.pulse-or {
+  animation: pulseOr 3s ease-in-out infinite;
+}
+
+/* -------------------------------------------------------
+   CHAMPS DE FORMULAIRE
+   ------------------------------------------------------- */
+.champ-form {
+  background: var(--ivoire);
+  border: 1px solid var(--bleu-nuit-20);
+  border-radius: 0.375rem;
+  color: var(--bleu-nuit);
+  font-family: var(--font-corps);
+  font-size: 0.875rem;
+  padding: 0.65rem 1rem;
+  width: 100%;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+  outline: none;
+}
+
+.champ-form::placeholder {
+  color: rgba(10, 25, 47, 0.38);
+}
+
+.champ-form:focus {
+  border-color: var(--or);
+  box-shadow: 0 0 0 3px var(--or-10);
+}
+
+/* -------------------------------------------------------
+   BADGE TAG (labels de catégorie)
+   ------------------------------------------------------- */
+.badge-or {
+  display: inline-block;
+  font-family: var(--font-corps);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--or-sombre);
+  background: var(--or-10);
+  border: 1px solid var(--or-25);
+  border-radius: 9999px;
+  padding: 0.2rem 0.7rem;
+}
+
+/* -------------------------------------------------------
+   MOBILE DRAWER
+   ------------------------------------------------------- */
+.drawer-mobile {
+  background: var(--ivoire);
+  border-left: 1px solid var(--bleu-nuit-20);
+}
+
+/* -------------------------------------------------------
+   CARTE TÉMOIN (Testimonials)
+   ------------------------------------------------------- */
+.carte-temoignage {
+  background: var(--ivoire);
+  border: 1px solid var(--or-25);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  transition:
+    box-shadow 0.35s ease,
+    transform 0.3s ease;
+}
+
+.carte-temoignage:hover {
+  box-shadow: 0 8px 28px -8px var(--or-50);
+  transform: translateY(-2px);
+}
+
+/* -------------------------------------------------------
+   NOTIFICATION SUCCÈS
+   ------------------------------------------------------- */
+.notif-succes {
+  background: #f0fdf4;
+  border: 1px solid #86efac;
+  border-radius: 0.5rem;
+  color: #166534;
+  font-size: 0.875rem;
+  padding: 0.9rem 1.2rem;
+}
+
+/* -------------------------------------------------------
+   PLAQUE RUE (simulation plaque de rue verte)
+   ------------------------------------------------------- */
+.plaque-rue {
+  background: #1a4a2e;
+  color: var(--ivoire);
+  border: 3px solid rgba(253, 251, 247, 0.3);
+  border-radius: 0.5rem;
+  text-align: center;
+}
+
+/* -------------------------------------------------------
+   CAROUSEL TÉMOIGNAGES — 2 × 2
+   ------------------------------------------------------- */
+#testimonials-list {
+  /* Le carousel JS gère la grille interne */
+  display: block !important;
+}
+
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--or-25);
+  border: 1px solid var(--or-50);
+  cursor: pointer;
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease;
+  padding: 0;
+}
+
+.carousel-dot:hover {
+  background: var(--or-50);
+  transform: scale(1.2);
+}
+
+.carousel-dot.active {
+  background: var(--or);
+  border-color: var(--or);
+  transform: scale(1.25);
+  box-shadow: 0 0 0 3px var(--or-10);
+}

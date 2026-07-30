@@ -1,0 +1,149 @@
+{
+  "livret": {
+    "titre": "Cahier de Contenu Harmonisé — Elhadj Moussa Gros Ibrahim",
+    "fichier": "assets/livret-moussa-gros.pdf",
+    "taille_octets": 33554432,
+    "description": "Le document officiel relatant la biographie, les œuvres et les valeurs d'Elhadj Moussa Gros Ibrahim."
+  },
+  "archives": [
+    {
+      "id": "arc-001",
+      "category": "photos",
+      "type": "image",
+      "src": "assets/elhadj_moussa_portrait.png",
+      "alt": "Portrait photographique d'Elhadj Moussa Gros Ibrahim",
+      "badge": "Photographie",
+      "title": "Portrait Officiel",
+      "caption": "Archives familiales Windiberi"
+    },
+    {
+      "id": "arc-002",
+      "category": "photos",
+      "type": "image",
+      "src": "assets/cinema_sonni_ali_ber.png",
+      "alt": "Complexe cinématographique SONEXCI — Sonni Ali Ber & Zabarkan",
+      "badge": "Photographie",
+      "title": "SONEXCI — Sonni Ali Ber & Zabarkan",
+      "caption": "Complexe cinématographique historique"
+    },
+    {
+      "id": "arc-003",
+      "category": "photos",
+      "type": "image",
+      "src": "assets/windiberi_concession.png",
+      "alt": "La concession Windiberi en face du Grand Marché",
+      "badge": "Photographie",
+      "title": "La Concession Windiberi",
+      "caption": "Concession familiale historique, Niamey"
+    },
+        {
+      "id": "arc-007",
+      "category": "photos",
+      "type": "image",
+      "src": "assets/tenere.jpg",
+      "alt": "l'hôtel ténéré",
+      "badge": "Photographie",
+      "title": "l'hôtel ténéré",
+      "caption": "l'hôtel ténéré, Niamey"
+    },
+    {
+      "id": "arc-008",
+      "category": "photos",
+      "type": "image",
+      "src": "assets/tenere-hotel-entrance.jpg",
+      "alt": "l'hôtel ténéré",
+      "badge": "Photographie",
+      "title": "entré de l'hôtel ténéré",
+      "caption": "l'hôtel ténéré, Niamey"
+    },
+    {
+      "id": "arc-009",
+      "category": "photos",
+      "type": "image",
+      "src": "assets/femmes.jpeg",
+      "alt": "les épouses de Elhadj Moussa Gros Ibrahim",
+      "badge": "Photographie",
+      "title": "Les deux épouses de Elhadj Moussa Gros Ibrahim",
+      "caption": "Niamey"
+    },
+    {
+      "id": "arc-010",
+      "category": "photos",
+      "type": "image",
+      "src": "assets/cinema.jpeg",
+      "alt": "le cinema Sonni Ali Ber",
+      "badge": "Photographie",
+      "title": "Le cinema Sonni Ali Ber",
+      "caption": "Niamey"
+    },
+    {
+      "id": "arc-004",
+      "category": "documents",
+      "type": "pdf",
+      "badge": "Document PDF",
+      "title": "Livret",
+      "description": "Le document officiel relatant la biographie, les œuvres et les valeurs d'Elhadj Moussa Gros Ibrahim.",
+      "fichier": "assets/livret-moussa-gros.pdf"
+    },
+    {
+      "id": "arc-005",
+      "category": "documents",
+      "type": "pdf",
+      "badge": "Document PDF",
+      "title": "Baptême de Rue — Juin 2026",
+      "description": "Note d'information et dossier de presse relatifs à la cérémonie officielle de baptême de la Rue Moussa Gros.",
+      "fichier": "assets/communique-bapteme-rue.pdf"
+    },
+    {
+      "id": "arc-006",
+      "category": "documents",
+      "type": "pdf",
+      "badge": "Document PDF",
+      "title": "Arrêté n°17/MJC/A/S/SG/DGCA",
+      "description": "Arrêté du 25 janvier 2024 portant création de la commission de baptême des rues de la Ville de Niamey.",
+      "fichier": "assets/arrete-commission-bapteme.pdf"
+    }
+  ],
+  "testimonials": [
+    {
+      "id": "temoin-1785410121657",
+      "name": "uh",
+      "relation": "Visiteur du site",
+      "date": "30 juillet 2026",
+      "content": "jhj",
+      "is_valid": false
+    },
+    {
+      "id": "temoin-1785410102513",
+      "name": "kgb",
+      "relation": "mv",
+      "date": "30 juillet 2026",
+      "content": "hkjh",
+      "is_valid": false
+    },
+    {
+      "id": "temoin-001",
+      "name": "Général de Brigade (Fils d'Elhadj Moussa)",
+      "relation": "Filleul & Fils unique",
+      "date": "27 Mai 1979",
+      "content": "Mon père fut un guide dont l'amour du Niger a inspiré chaque instant de ma vie d'officier. Sa bénédiction m'accompagne toujours.",
+      "is_valid": true
+    },
+    {
+      "id": "temoin-002",
+      "name": "Elhadj Mounkaila Sakoira",
+      "relation": "Ami de longue date & Co-fondateur de la SONEXCI",
+      "date": "12 Juin 1973",
+      "content": "Moussa avait cette rare capacité de voir loin. Les cinémas Sonni Ali Ber et Zabarkan n'étaient pas que des affaires, ils étaient notre rêve de donner à Niamey une fierté culturelle moderne.",
+      "is_valid": true
+    },
+    {
+      "id": "temoin-003",
+      "name": "Un ancien chauffeur du syndicat",
+      "relation": "Collaborateur",
+      "date": "12 Septembre 1973",
+      "content": "En tant que premier président du Syndicat des Transporteurs, il a toujours défendu la dignité des chauffeurs routiers. Il disait que la route unit les hommes.",
+      "is_valid": true
+    }
+  ]
+}

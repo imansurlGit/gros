@@ -1,0 +1,334 @@
+﻿<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Espace de Modération des Hommages — Famille Moussa Gros</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="bg-[#fdfbf7] text-[#0a192f] min-h-screen flex flex-col font-sans">
+
+  <!-- En-tête Institutionnel -->
+  <header class="zone-sombre border-b border-[#d4af37]/30 py-6 px-4 sm:px-8">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+      <div>
+        <span class="badge-or mb-2 inline-block">Espace Interne — Administration</span>
+        <h1 class="font-titre text-2xl sm:text-3xl font-bold text-ivoire">
+          Modération & Validation des Hommages
+        </h1>
+        <p class="font-corps text-xs sm:text-sm text-ivoire/60 mt-1">
+          Gestion du Livre d'or — Elhadj Moussa Gros Ibrahim
+        </p>
+      </div>
+      <a href="index.html#/archives"
+        class="btn-contour-blanc px-4 py-2 rounded-lg text-xs font-semibold flex items-center gap-2">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        Retour au site principal
+      </a>
+    </div>
+  </header>
+
+  <!-- Contenu Principal -->
+  <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10">
+
+    <!-- Toast Notification -->
+    <div id="toast-notif"
+      class="fixed top-5 right-5 z-50 hidden bg-nuit text-ivoire px-5 py-3 rounded-lg shadow-xl border border-or/40 flex items-center gap-3 transition-all">
+      <svg class="w-5 h-5 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+      </svg>
+      <span id="toast-message" class="text-sm font-medium"></span>
+    </div>
+
+    <!-- Statistiques -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
+      <div class="carte-patrimoine p-6 flex items-center justify-between">
+        <div>
+          <p class="text-xs uppercase tracking-wider text-nuit/50 font-semibold">Total Hommages</p>
+          <h3 id="stat-total" class="font-titre text-3xl font-bold text-nuit mt-1">0</h3>
+        </div>
+        <div class="w-12 h-12 rounded-lg bg-nuit/5 border border-nuit/10 flex items-center justify-center text-nuit">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+              d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+          </svg>
+        </div>
+      </div>
+
+      <div class="carte-patrimoine p-6 flex items-center justify-between border-amber-300/50 bg-amber-50/30">
+        <div>
+          <p class="text-xs uppercase tracking-wider text-amber-800 font-semibold">En attente de validation</p>
+          <h3 id="stat-pending" class="font-titre text-3xl font-bold text-amber-700 mt-1">0</h3>
+        </div>
+        <div class="w-12 h-12 rounded-lg bg-amber-100 border border-amber-300 flex items-center justify-center text-amber-700">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+              d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+      </div>
+
+      <div class="carte-patrimoine p-6 flex items-center justify-between border-emerald-300/50 bg-emerald-50/30">
+        <div>
+          <p class="text-xs uppercase tracking-wider text-emerald-800 font-semibold">Validés (En ligne)</p>
+          <h3 id="stat-valid" class="font-titre text-3xl font-bold text-emerald-700 mt-1">0</h3>
+        </div>
+        <div class="w-12 h-12 rounded-lg bg-emerald-100 border border-emerald-300 flex items-center justify-center text-emerald-700">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Barre de Recherche & Filtres -->
+    <div class="carte-patrimoine p-6 mb-8">
+      <div class="flex flex-col md:flex-row gap-4 items-center justify-between">
+        
+        <!-- Barre de recherche -->
+        <div class="relative w-full md:w-1/2">
+          <svg class="w-5 h-5 absolute left-3.5 top-1/2 -translate-y-1/2 text-nuit/40" fill="none"
+            stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+          <input type="text" id="search-input" placeholder="Rechercher par nom, auteur, contenu..."
+            class="champ-form pl-10 pr-4 py-2.5 w-full text-sm" />
+        </div>
+
+        <!-- Filtres par statut -->
+        <div class="flex items-center gap-2 w-full md:w-auto flex-wrap justify-center">
+          <button data-filter="all" class="filter-btn active btn-contour px-4 py-2 rounded-full text-xs font-semibold">
+            Tous
+          </button>
+          <button data-filter="pending" class="filter-btn btn-contour px-4 py-2 rounded-full text-xs font-semibold">
+            En attente
+          </button>
+          <button data-filter="valid" class="filter-btn btn-contour px-4 py-2 rounded-full text-xs font-semibold">
+            Validés
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Compteur & Liste des Témoignages -->
+    <div class="mb-4 flex justify-between items-center px-1">
+      <h2 class="font-titre font-bold text-xl text-nuit">Liste des Hommages</h2>
+      <span id="results-count" class="font-corps text-xs text-nuit/60">Chargement...</span>
+    </div>
+
+    <div id="testimonials-container" class="space-y-4">
+      <!-- Rendu dynamique par JavaScript -->
+    </div>
+
+  </main>
+
+  <footer class="zone-sombre border-t border-or/20 py-6 text-center text-xs text-ivoire/50">
+    Famille Moussa Gros Ibrahim — Espace de modération interne
+  </footer>
+
+  <script>
+    let allTestimonials = [];
+    let currentFilter = 'all';
+    let searchQuery = '';
+
+    // Éléments du DOM
+    const container = document.getElementById('testimonials-container');
+    const searchInput = document.getElementById('search-input');
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const statTotal = document.getElementById('stat-total');
+    const statPending = document.getElementById('stat-pending');
+    const statValid = document.getElementById('stat-valid');
+    const resultsCount = document.getElementById('results-count');
+
+    // Afficher une notification Toast
+    function showToast(message) {
+      const toast = document.getElementById('toast-notif');
+      const toastMsg = document.getElementById('toast-message');
+      toastMsg.textContent = message;
+      toast.classList.remove('hidden');
+      setTimeout(() => toast.classList.add('hidden'), 3500);
+    }
+
+    // Charger les témoignages depuis l'API d'administration
+    async function fetchTestimonials() {
+      try {
+        const res = await fetch('/api/admin/testimonials');
+        if (!res.ok) throw new Error('Erreur réseau');
+        const data = await res.json();
+        allTestimonials = data.testimonials || [];
+        updateStats();
+        render();
+      } catch (err) {
+        container.innerHTML = `
+          <div class="carte-patrimoine p-8 text-center text-red-600">
+            Erreur lors du chargement des hommages. Assurez-vous que le serveur Node.js est lancé.
+          </div>
+        `;
+      }
+    }
+
+    // Mettre à jour les compteurs
+    function updateStats() {
+      const total = allTestimonials.length;
+      const valid = allTestimonials.filter(t => t.is_valid === true).length;
+      const pending = total - valid;
+
+      statTotal.textContent = total;
+      statValid.textContent = valid;
+      statPending.textContent = pending;
+    }
+
+    // Basculer le statut d'un hommage (Valider ou Invalider)
+    async function toggleStatus(id, newStatus) {
+      try {
+        const res = await fetch(`/api/admin/testimonials/${id}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ is_valid: newStatus })
+        });
+        if (!res.ok) throw new Error('Échec de la mise à jour');
+        
+        // Mettre à jour en local
+        const item = allTestimonials.find(t => t.id === id);
+        if (item) item.is_valid = newStatus;
+        
+        showToast(newStatus ? 'Hommage validé et publié sur le site.' : 'Hommage retiré des publications.');
+        updateStats();
+        render();
+      } catch (err) {
+        alert('Erreur lors de la modification du statut.');
+      }
+    }
+
+    // Supprimer un hommage
+    async function deleteTestimonial(id, name) {
+      if (!confirm(`Voulez-vous vraiment supprimer définitivement l'hommage de "${name}" ?`)) return;
+
+      try {
+        const res = await fetch(`/api/admin/testimonials/${id}`, { method: 'DELETE' });
+        if (!res.ok) throw new Error('Échec de la suppression');
+        
+        allTestimonials = allTestimonials.filter(t => t.id !== id);
+        showToast('Hommage supprimé avec succès.');
+        updateStats();
+        render();
+      } catch (err) {
+        alert('Erreur lors de la suppression.');
+      }
+    }
+
+    // Filtrer et afficher la liste
+    function render() {
+      container.innerHTML = '';
+
+      const filtered = allTestimonials.filter(item => {
+        // Filtre par statut
+        if (currentFilter === 'valid' && item.is_valid !== true) return false;
+        if (currentFilter === 'pending' && item.is_valid === true) return false;
+
+        // Filtre par recherche texte
+        if (searchQuery) {
+          const q = searchQuery.toLowerCase();
+          const matchName = (item.name || '').toLowerCase().includes(q);
+          const matchRel = (item.relation || '').toLowerCase().includes(q);
+          const matchContent = (item.content || '').toLowerCase().includes(q);
+          return matchName || matchRel || matchContent;
+        }
+
+        return true;
+      });
+
+      resultsCount.textContent = `${filtered.length} hommage(s) trouvé(s)`;
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="carte-patrimoine p-12 text-center text-nuit/50">
+            Aucun hommage ne correspond aux critères de recherche ou de filtre actuels.
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach(item => {
+        const isValid = item.is_valid === true;
+        const card = document.createElement('div');
+        card.className = `carte-patrimoine p-6 transition-all border-l-4 ${
+          isValid ? 'border-l-emerald-500 bg-white' : 'border-l-amber-500 bg-amber-50/20'
+        }`;
+
+        card.innerHTML = `
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-4">
+            <div>
+              <div class="flex items-center gap-3 flex-wrap">
+                <h3 class="font-titre font-bold text-lg text-nuit">${item.name}</h3>
+                <span class="text-xs px-2.5 py-0.5 rounded-full font-semibold ${
+                  isValid ? 'bg-emerald-100 text-emerald-800 border border-emerald-300' : 'bg-amber-100 text-amber-800 border border-amber-300'
+                }">
+                  ${isValid ? '✓ Validé & En ligne' : '⏳ En attente de validation'}
+                </span>
+              </div>
+              <p class="font-corps text-xs text-or-sombre mt-0.5">${item.relation || 'Visiteur'} — <span class="text-nuit/40">${item.date}</span></p>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex items-center gap-2 self-end sm:self-center">
+              ${
+                isValid
+                  ? `<button onclick="toggleStatus('${item.id}', false)" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold border border-amber-400 text-amber-800 bg-amber-50 hover:bg-amber-100 transition flex items-center gap-1.5">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"/></svg>
+                      Retirer la publication
+                     </button>`
+                  : `<button onclick="toggleStatus('${item.id}', true)" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-emerald-600 hover:bg-emerald-700 text-white transition shadow-sm flex items-center gap-1.5">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                      Valider & Publier
+                     </button>`
+              }
+              <button onclick="deleteTestimonial('${item.id}', '${(item.name || '').replace(/'/g, "\\'")}')" class="px-3 py-1.5 rounded-lg text-xs font-semibold border border-red-200 text-red-600 hover:bg-red-50 transition flex items-center gap-1">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                Supprimer
+              </button>
+            </div>
+          </div>
+
+          <p class="font-corps italic text-sm text-nuit/80 leading-relaxed bg-ivoire/60 p-4 rounded-lg border border-nuit/5">
+            « ${item.content} »
+          </p>
+        `;
+
+        container.appendChild(card);
+      });
+    }
+
+    // Événements Recherche
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = e.target.value.trim();
+      render();
+    });
+
+    // Événements Filtres par statut
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => {
+          b.classList.remove('bg-or', 'text-nuit', 'font-bold');
+          b.classList.add('btn-contour');
+        });
+        btn.classList.add('bg-or', 'text-nuit', 'font-bold');
+        btn.classList.remove('btn-contour');
+        currentFilter = btn.getAttribute('data-filter');
+        render();
+      });
+    });
+
+    // Initialisation
+    fetchTestimonials();
+  </script>
+</body>
+
+</html>
