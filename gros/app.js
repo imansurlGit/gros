@@ -185,10 +185,11 @@ document.addEventListener('DOMContentLoaded', () => {
         wrapper.setAttribute('data-category', item.category);
 
         if (item.type === 'image') {
+            const colorClass = (item.is_color || item.color || item.is_couleur) ? 'photo-couleur' : '';
             wrapper.innerHTML = `
                 <div class="h-64 overflow-hidden bg-nuit">
                     <img src="${item.src}" alt="${item.alt || item.title || ''}"
-                        class="photo-patrimoine w-full h-full object-cover object-top cursor-zoom-in" />
+                        class="photo-patrimoine ${colorClass} w-full h-full object-cover object-top cursor-zoom-in" />
                 </div>
                 <div class="p-5 border-t border-nuit/08">
                     <span class="badge-or">${item.badge || 'Photographie'}</span>

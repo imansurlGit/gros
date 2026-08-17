@@ -28,12 +28,12 @@
         extend: {
           colors: {
             ivoire: {
-              DEFAULT: "#fdfbf7",
+              DEFAULT: "#ffffff",
               ombre: "#f3efe8",
               sombre: "#e8e2d9",
             },
             nuit: {
-              DEFAULT: "#0a192f",
+              DEFAULT: "#6e0000",
               clair: "#162540",
               light: "#1e3252",
               mid: "#2a4a72",
@@ -61,29 +61,8 @@
   <header class="fixed top-0 left-0 w-full z-50 glass-nav">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       <!-- Logo / Identité -->
-      <a href="#/accueil" class="flex items-center gap-3 group">
-        <div
-          class="w-10 h-10 rounded-lg bg-nuit flex items-center justify-center shadow border border-or/30 group-hover:bg-nuit-clair transition-colors duration-300">
-          <!-- <svg
-              class="w-5 h-5 text-or"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2.5"
-            >
-              <path
-                d="M4 4h4l4 12 4-12h4"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <circle cx="12" cy="18" r="1.5" fill="currentColor" />
-            </svg> -->
-          <span class="w-6 h-6 text-or-clair">MG</span>
-        </div>
-        <div>
-          <span class="block text-sm font-titre font-bold tracking-widest text-nuit uppercase">Moussa Gros</span>
-          <span class="block text-[10px] uppercase tracking-[0.2em] text-nuit/50 font-corps">Famille Moussa Gros</span>
-        </div>
+      <a href="#/accueil" class="flex items-center">
+        <img src="assets/logo.png" alt="Famille Moussa Gros" class="h-12 w-auto object-contain" />
       </a>
 
       <!-- Liens desktop -->
@@ -1247,11 +1226,8 @@
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
         <!-- Identité -->
         <div class="md:col-span-2">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-8 h-8 rounded bg-or flex items-center justify-center text-nuit font-titre font-black text-sm">
-              M
-            </div>
-            <span class="font-titre text-ivoire tracking-widest uppercase font-bold text-sm">Famille Moussa Gros</span>
+          <div class="mb-4">
+            <img src="assets/logo.png" alt="Famille Moussa Gros" class="h-16 w-auto object-contain" />
           </div>
           <p class="font-corps text-xs text-ivoire/50 leading-relaxed max-w-sm">
             Espace dédié à la préservation de la mémoire, de l'œuvre et des

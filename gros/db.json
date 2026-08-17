@@ -36,7 +36,7 @@
       "title": "La Concession Windiberi",
       "caption": "Concession familiale historique, Niamey"
     },
-        {
+    {
       "id": "arc-007",
       "category": "photos",
       "type": "image",
@@ -44,17 +44,8 @@
       "alt": "l'hôtel ténéré",
       "badge": "Photographie",
       "title": "l'hôtel ténéré",
-      "caption": "l'hôtel ténéré, Niamey"
-    },
-    {
-      "id": "arc-008",
-      "category": "photos",
-      "type": "image",
-      "src": "assets/tenere-hotel-entrance.jpg",
-      "alt": "l'hôtel ténéré",
-      "badge": "Photographie",
-      "title": "entré de l'hôtel ténéré",
-      "caption": "l'hôtel ténéré, Niamey"
+      "caption": "l'hôtel ténéré, Niamey",
+      "is_color": true
     },
     {
       "id": "arc-009",
@@ -119,7 +110,7 @@
       "relation": "mv",
       "date": "30 juillet 2026",
       "content": "hkjh",
-      "is_valid": false
+      "is_valid": true
     },
     {
       "id": "temoin-001",

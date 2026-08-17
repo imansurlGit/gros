@@ -11,15 +11,15 @@
    ------------------------------------------------------- */
 :root {
   /* Fond principal Ivoire */
-  --ivoire: #fdfbf7;
+  --ivoire: #ffffff;
   --ivoire-ombre: #f3efe8;
   --ivoire-sombre: #e8e2d9;
 
   /* Texte & zones sombres — Bleu Nuit */
-  --bleu-nuit: #0a192f;
-  --bleu-nuit-80: rgba(10, 25, 47, 0.8);
-  --bleu-nuit-60: rgba(10, 25, 47, 0.6);
-  --bleu-nuit-20: rgba(10, 25, 47, 0.12);
+  --bleu-nuit: #6e0000;
+  --bleu-nuit-80: rgba(110, 0, 0, 0.8);
+  --bleu-nuit-60: rgba(110, 0, 0, 0.6);
+  --bleu-nuit-20: rgba(110, 0, 0, 0.12);
   --bleu-nuit-clair: #162540;
   --bleu-nuit-light: #1e3252;
 
@@ -91,7 +91,7 @@ h6,
    NAVIGATION — Glassmorphism sur fond ivoire
    ------------------------------------------------------- */
 .glass-nav {
-  background: rgba(253, 251, 247, 0.88);
+  background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--or-25);
@@ -145,7 +145,7 @@ h6,
   border-color: var(--or-50);
   box-shadow:
     0 12px 40px -10px rgba(212, 175, 55, 0.18),
-    0 4px 16px -4px rgba(10, 25, 47, 0.08);
+    0 4px 16px -4px rgba(110, 0, 0, 0.08);
   transform: translateY(-3px);
 }
 
@@ -241,7 +241,7 @@ h6,
 .btn-contour-blanc {
   background-color: transparent;
   color: var(--ivoire);
-  border: 1px solid rgba(253, 251, 247, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.35);
   font-family: var(--font-corps);
   font-weight: 600;
   transition:
@@ -268,6 +268,10 @@ h6,
 .photo-patrimoine:hover {
   filter: grayscale(0%) contrast(100%) brightness(100%);
   transform: scale(1.03);
+}
+
+.photo-patrimoine.photo-couleur {
+  filter: grayscale(0%) contrast(100%) brightness(100%);
 }
 
 /* -------------------------------------------------------
@@ -446,7 +450,7 @@ h6,
 }
 
 .champ-form::placeholder {
-  color: rgba(10, 25, 47, 0.38);
+  color: rgba(110, 0, 0, 0.38);
 }
 
 .champ-form:focus {
@@ -515,7 +519,7 @@ h6,
 .plaque-rue {
   background: #1a4a2e;
   color: var(--ivoire);
-  border: 3px solid rgba(253, 251, 247, 0.3);
+  border: 3px solid rgba(255, 255, 255, 0.3);
   border-radius: 0.5rem;
   text-align: center;
 }
