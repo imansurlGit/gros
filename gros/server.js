@@ -277,8 +277,11 @@ app.use(express.static(__dirname));
 // ----------------------------------------------------
 // 4. DEMARRAGE DU SERVEUR
 // ----------------------------------------------------
+// 4. DÉMARRAGE DU SERVEUR (uniquement en local)
 if (require.main === module) {
   app.listen(PORT, () => {
     console.log(`\n Serveur Express démarré sur http://localhost:${PORT}`);
   });
 }
+
+module.exports = app;
