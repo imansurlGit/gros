@@ -153,12 +153,12 @@ app.post('/api/contact', async (req, res) => {
       `La Famille Moussa Gros — Concession Windiberi, Niamey`;
 
     const htmlTemplate = `
-      <div style="font-family: Georgia, 'Times New Roman', serif; background-color:#fdfbf7; padding: 32px 16px; color:#0a192f;">
+      <div style="font-family: Georgia, 'Times New Roman', serif; background-color:#ffffff; padding: 32px 16px; color:#6e0000;">
         <table role="presentation" width="100%" style="max-width:560px; margin:0 auto; background:#ffffff; border:1px solid rgba(212,175,55,0.35); border-radius:10px; overflow:hidden;">
           <tr>
-            <td style="background-color:#0a192f; padding:28px 32px; text-align:center;">
+            <td style="background-color:#6e0000; padding:28px 32px; text-align:center;">
               <p style="margin:0; font-size:11px; letter-spacing:3px; text-transform:uppercase; color:#e8cc73;">Famille Moussa Gros</p>
-              <h1 style="margin:8px 0 0; font-size:22px; color:#fdfbf7; font-weight:700;">Accusé de réception</h1>
+              <h1 style="margin:8px 0 0; font-size:22px; color:#ffffff; font-weight:700;">Accusé de réception</h1>
             </td>
           </tr>
           <tr>
@@ -277,6 +277,8 @@ app.use(express.static(__dirname));
 // ----------------------------------------------------
 // 4. DEMARRAGE DU SERVEUR
 // ----------------------------------------------------
-app.listen(PORT, () => {
-  console.log(`\n Serveur Express démarré sur http://localhost:${PORT}`);
-});
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`\n Serveur Express démarré sur http://localhost:${PORT}`);
+  });
+}
