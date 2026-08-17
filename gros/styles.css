@@ -514,12 +514,12 @@ h6,
 }
 
 /* -------------------------------------------------------
-   PLAQUE RUE (simulation plaque de rue verte)
+   PLAQUE RUE — conteneur image (désactivé: fond vert)
    ------------------------------------------------------- */
 .plaque-rue {
-  background: #1a4a2e;
-  color: var(--ivoire);
-  border: 3px solid rgba(255, 255, 255, 0.3);
+  background: transparent; /* retiré le vert */
+  color: inherit;
+  border: none; /* plus de bordure visible */
   border-radius: 0.5rem;
   text-align: center;
 }
