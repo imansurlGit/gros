@@ -31,7 +31,7 @@ const transporter = nodmailer.createTransport({
 })
 
 // ----------------------------------------------------
-// 1. MIDDLEWARE DE SÉCURITÉ & CONTRÔLE D'ACCÈS
+// 1. MIDDLEWARE DE SÉCURITÉ et CONTRÔLE D'ACCÈS
 // ----------------------------------------------------
 app.use((req, res, next) => {
   const reqPath = req.path.toLowerCase();
@@ -44,7 +44,7 @@ app.use((req, res, next) => {
 
   // B. Interdiction de consultation directe dans la barre d'adresse pour les fichiers JS/CSS
   const fetchDest = req.headers['sec-fetch-dest'];
-  if (fetchDest === 'document' && (reqPath === '/app.js' || reqPath === '/styles.css')) {
+  if (fetchDest === 'document' etet (reqPath === '/app.js' || reqPath === '/styles.css')) {
     return res.status(403).type('text/plain; charset=utf-8').send('403 Forbidden : Consultation directe du code source interdite.');
   }
 

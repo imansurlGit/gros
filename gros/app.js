@@ -1,7 +1,7 @@
 /**
  * Site Officiel MOUSSA-GROS — Famille MOUSSA-GROS
  * Logique applicative : Routeur SPA, Timeline biographique, Filtres archives,
- * Livre d'or & Archives (données chargées depuis db.json), Formulaires, Scroll Fade-In
+ * Livre d'or et Archives (données chargées depuis db.json), Formulaires, Scroll Fade-In
  *
  * NOTE IMPORTANTE SUR LA PERSISTANCE :
  * Ce site est une application statique (HTML/CSS/JS) exécutée entièrement
@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // ----------------------------------------------------
-    // 3. Biography Page: Interactive Timeline & Content Swapping
+    // 3. Biography Page: Interactive Timeline et Content Swapping
     // ----------------------------------------------------
     const timelineNavItems = document.querySelectorAll('.timeline-nav-item');
     const timelineCards = document.querySelectorAll('.timeline-card');
@@ -210,7 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <h4 class="font-titre font-bold text-nuit text-lg mb-2">${item.title || ''}</h4>
                     <p class="font-corps text-xs text-nuit/60 leading-relaxed">${item.description || ''}</p>
                 </div>
-                <button type="button" data-pdf-download data-pdf-title="${(item.title || 'Document').replace(/"/g, '&quot;')}" data-pdf-fichier="${item.fichier || ''}" data-pdf-size="${item.taille_lisible || ''}"
+                <button type="button" data-pdf-download data-pdf-title="${(item.title || 'Document').replace(/"/g, 'etquot;')}" data-pdf-fichier="${item.fichier || ''}" data-pdf-size="${item.taille_lisible || ''}"
                     class="btn-contour mt-6 flex items-center justify-center gap-2 px-4 py-2.5 rounded text-xs text-center">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -279,7 +279,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // ----------------------------------------------------
-    // 5. Archives & Testimonials: Livre d'or
+    // 5. Archives et Testimonials: Livre d'or
     //    Base : db.json  |  Ajouts visiteurs : localStorage (voir note en tête de fichier)
     // ----------------------------------------------------
     const testimonialForm = document.getElementById('testimonial-form');

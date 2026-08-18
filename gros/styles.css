@@ -1,10 +1,10 @@
 /* =======================================================
    Site Officiel MOUSSA-GROS — Famille MOUSSA-GROS
-   Feuille de styles principale — Design Premium & Institutionnel
+   Feuille de styles principale — Design Premium et Institutionnel
    ======================================================= */
 
 /* Polices : Playfair Display (titres) + Inter (corps) */
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,700etfamily=Inter:wght@300;400;500;600;700etdisplay=swap");
 
 /* -------------------------------------------------------
    VARIABLES GLOBALES — Palette Institutionnelle
@@ -15,7 +15,7 @@
   --ivoire-ombre: #f3efe8;
   --ivoire-sombre: #e8e2d9;
 
-  /* Texte & zones sombres — Bleu Nuit */
+  /* Texte et zones sombres — Bleu Nuit */
   --bleu-nuit: #6e0000;
   --bleu-nuit-80: rgba(110, 0, 0, 0.8);
   --bleu-nuit-60: rgba(110, 0, 0, 0.6);
@@ -256,7 +256,7 @@ h6,
 }
 
 /* -------------------------------------------------------
-   GALERIE — Noir & Blanc → Couleur au survol
+   GALERIE — Noir et Blanc → Couleur au survol
    ------------------------------------------------------- */
 .photo-patrimoine {
   filter: grayscale(100%) contrast(95%) brightness(95%);
@@ -367,7 +367,7 @@ h6,
 }
 
 /* -------------------------------------------------------
-   PAGES — Transitions & Routeur SPA
+   PAGES — Transitions et Routeur SPA
    ------------------------------------------------------- */
 .page-section {
   display: none;

@@ -22,9 +22,9 @@
       "category": "photos",
       "type": "image",
       "src": "assets/cinema_sonni_ali_ber.png",
-      "alt": "Complexe cinématographique SONEXCI — Sonni Ali Ber & Zabarkan",
+      "alt": "Complexe cinématographique SONEXCI — Sonni Ali Ber et Zabarkan",
       "badge": "Photographie",
-      "title": "SONEXCI — Sonni Ali Ber & Zabarkan",
+      "title": "SONEXCI — Sonni Ali Ber et Zabarkan",
       "caption": "Complexe cinématographique historique"
     },
     {
@@ -116,7 +116,7 @@
     {
       "id": "temoin-001",
       "name": "Général de Brigade (Fils d'Elhadj Moussa)",
-      "relation": "Filleul & Fils unique",
+      "relation": "Filleul et Fils unique",
       "date": "27 Mai 1979",
       "content": "Mon père fut un guide dont l'amour du Niger a inspiré chaque instant de ma vie d'officier. Sa bénédiction m'accompagne toujours.",
       "is_valid": true
@@ -124,7 +124,7 @@
     {
       "id": "temoin-002",
       "name": "Elhadj Mounkaila Sakoira",
-      "relation": "Ami de longue date & Co-fondateur de la SONEXCI",
+      "relation": "Ami de longue date et Co-fondateur de la SONEXCI",
       "date": "12 Juin 1973",
       "content": "Moussa avait cette rare capacité de voir loin. Les cinémas Sonni Ali Ber et Zabarkan n'étaient pas que des affaires, ils étaient notre rêve de donner à Niamey une fierté culturelle moderne.",
       "is_valid": true
