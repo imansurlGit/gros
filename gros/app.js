@@ -1,5 +1,5 @@
 /**
- * Site Officiel Moussa Gros — Famille Moussa Gros
+ * Site Officiel MOUSSA-GROS — Famille MOUSSA-GROS
  * Logique applicative : Routeur SPA, Timeline biographique, Filtres archives,
  * Livre d'or & Archives (données chargées depuis db.json), Formulaires, Scroll Fade-In
  *
@@ -186,10 +186,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (item.type === 'image') {
             const colorClass = (item.is_color || item.color || item.is_couleur) ? 'photo-couleur' : '';
+            const isPortrait = item.portrait === true;
+            const containerH = isPortrait ? 'h-80' : 'h-64';
+            const objFit = isPortrait ? 'object-contain object-right' : 'object-cover object-top';
             wrapper.innerHTML = `
-                <div class="h-64 overflow-hidden bg-nuit">
+                <div class="${containerH} overflow-hidden bg-nuit flex items-center justify-center">
                     <img src="${item.src}" alt="${item.alt || item.title || ''}"
-                        class="photo-patrimoine ${colorClass} w-full h-full object-cover object-top cursor-zoom-in" />
+                        class="photo-patrimoine ${colorClass} w-full h-full ${objFit} cursor-zoom-in" />
                 </div>
                 <div class="p-5 border-t border-nuit/08">
                     <span class="badge-or">${item.badge || 'Photographie'}</span>

@@ -1,5 +1,5 @@
 /**
- * server.js — Serveur Express pour le site Moussa Gros
+ * server.js — Serveur Express pour le site MOUSSA-GROS
  * 
  * Inclus :
  *  - Protection d'accès direct sur db.json, server.js, package.json
@@ -145,19 +145,19 @@ app.post('/api/contact', async (req, res) => {
     const textTemplate = 
       `Bonjour ${name},\n\n` +
       `Nous avons bien reçu votre message et nous vous en remercions.\n` +
-      `La Famille Moussa Gros reviendra vers vous dans les plus brefs délais.\n\n` +
+      `La Famille MOUSSA-GROS reviendra vers vous dans les plus brefs délais.\n\n` +
       `--- Récapitulatif de votre message ---\n` +
       `Sujet : ${sujetAffiche}\n` +
       `Message :\n${message}\n\n` +
       `Cordialement,\n` +
-      `La Famille Moussa Gros — Concession Windiberi, Niamey`;
+      `La Famille MOUSSA-GROS — Concession Windiberi, Niamey`;
 
     const htmlTemplate = `
       <div style="font-family: Georgia, 'Times New Roman', serif; background-color:#ffffff; padding: 32px 16px; color:#6e0000;">
         <table role="presentation" width="100%" style="max-width:560px; margin:0 auto; background:#ffffff; border:1px solid rgba(212,175,55,0.35); border-radius:10px; overflow:hidden;">
           <tr>
             <td style="background-color:#6e0000; padding:28px 32px; text-align:center;">
-              <p style="margin:0; font-size:11px; letter-spacing:3px; text-transform:uppercase; color:#e8cc73;">Famille Moussa Gros</p>
+              <p style="margin:0; font-size:11px; letter-spacing:3px; text-transform:uppercase; color:#e8cc73;">Famille MOUSSA-GROS</p>
               <h1 style="margin:8px 0 0; font-size:22px; color:#ffffff; font-weight:700;">Accusé de réception</h1>
             </td>
           </tr>
@@ -189,7 +189,7 @@ app.post('/api/contact', async (req, res) => {
     `;
 
     const infoClient = await transporter.sendMail({
-      from: `"Site officiel Moussa Gros" <imanagence@gmail.com>`,
+      from: `"Site officiel MOUSSA-GROS" <imanagence@gmail.com>`,
       to: email,
       subject: `${sujetAffiche}`,
       text: textTemplate,

@@ -1,7 +1,7 @@
 {
   "name": "moussa-gros-site",
   "version": "1.0.0",
-  "description": "Site Officiel Elhadj Moussa Gros Ibrahim",
+  "description": "Site Officiel Elhadj MOUSSA-GROS Ibrahim",
   "main": "server.js",
   "scripts": {
     "dev": "node server.js"
