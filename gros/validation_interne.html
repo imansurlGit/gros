@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="fr" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
@@ -21,7 +21,7 @@
             >Espace Interne — Administration</span
           >
           <h1 class="font-titre text-2xl sm:text-3xl font-bold text-ivoire">
-            Modération & Validation des Hommages
+            Modération et Validation des Hommages
           </h1>
           <p class="font-corps text-xs sm:text-sm text-ivoire/60 mt-1">
             Gestion du Livre d'or — Elhadj MOUSSA-GROS Ibrahim
@@ -178,7 +178,7 @@
         </div>
       </div>
 
-      <!-- Barre de Recherche & Filtres -->
+      <!-- Barre de Recherche et Filtres -->
       <div class="carte-patrimoine p-6 mb-8">
         <div
           class="flex flex-col md:flex-row gap-4 items-center justify-between"
@@ -232,7 +232,7 @@
         </div>
       </div>
 
-      <!-- Compteur & Liste des Témoignages -->
+      <!-- Compteur et Liste des Témoignages -->
       <div class="mb-4 flex justify-between items-center px-1">
         <h2 class="font-titre font-bold text-xl text-nuit">
           Liste des Hommages
@@ -407,7 +407,7 @@
                     ? "bg-emerald-100 text-emerald-800 border border-emerald-300"
                     : "bg-amber-100 text-amber-800 border border-amber-300"
                 }">
-                  ${isValid ? "✓ Validé & En ligne" : "En attente de validation"}
+                  ${isValid ? "✓ Validé et En ligne" : "En attente de validation"}
                 </span>
               </div>
               <p class="font-corps text-xs text-or-sombre mt-0.5">${item.relation || "Visiteur"} — <span class="text-nuit/40">${item.date}</span></p>
@@ -423,7 +423,7 @@
                      </button>`
                   : `<button onclick="toggleStatus('${item.id}', true)" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-emerald-600 hover:bg-emerald-700 text-white transition shadow-sm flex items-center gap-1.5">
                       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                      Valider & Publier
+                      Valider et Publier
                      </button>`
               }
               <button onclick="deleteTestimonial('${item.id}', '${(item.name || "").replace(/'/g, "\\'")}')" class="px-3 py-1.5 rounded-lg text-xs font-semibold border border-red-200 text-red-600 hover:bg-red-50 transition flex items-center gap-1">
