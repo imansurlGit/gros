@@ -19,32 +19,45 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     // ----------------------------------------------------
-    // 0. Chargement des données (db.json)
+    // 0. Chargement des données (db.json + ceremonie-data.json)
     // ----------------------------------------------------
     let siteData = {
         livret: null,
         archives: [],
+        ceremonie: [],
         testimonials: []
     };
 
     const DATA_URL = '/api/data';
 
-    function loadSiteData() {
-        return fetch(DATA_URL)
-            .then((res) => {
-                if (!res.ok) throw new Error('Impossible de charger les données du site.');
-                return res.json();
-            })
-            .then((data) => {
-                siteData = {
-                    livret: data.livret || null,
-                    archives: Array.isArray(data.archives) ? data.archives : [],
-                    testimonials: Array.isArray(data.testimonials) ? data.testimonials : []
-                };
-            })
-            .catch((err) => {
-                console.error('Erreur de chargement de db.json :', err);
-            });
+    async function loadSiteData() {
+        try {
+            const res = await fetch(DATA_URL);
+            if (res.ok) {
+                const data = await res.json();
+                siteData.livret = data.livret || null;
+                siteData.archives = Array.isArray(data.archives) ? data.archives : [];
+                siteData.ceremonie = Array.isArray(data.ceremonie) ? data.ceremonie : [];
+                siteData.testimonials = Array.isArray(data.testimonials) ? data.testimonials : [];
+            }
+        } catch (err) {
+            console.warn('Chargement /api/data non disponible, tentative locale :', err);
+        }
+
+        // Si les images de cérémonie ne sont pas encore présentes, charger ceremonie-data.json
+        if (!siteData.ceremonie || siteData.ceremonie.length === 0) {
+            try {
+                const cRes = await fetch('ceremonie-data.json');
+                if (cRes.ok) {
+                    const cData = await cRes.json();
+                    if (Array.isArray(cData)) {
+                        siteData.ceremonie = cData;
+                    }
+                }
+            } catch (e) {
+                console.warn('Impossible de charger ceremonie-data.json :', e);
+            }
+        }
     }
 
 
@@ -163,11 +176,77 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // ----------------------------------------------------
-    // 4. Archives Page: Rendu dynamique + Filtrage (Photos / Documents)
-    //    Les archives et leurs catégories proviennent de db.json
+    // 4. Archives Page: Rendu dynamique + Filtrage (Photos / Cérémonie / Documents)
     // ----------------------------------------------------
     const archivesGrid = document.getElementById('archives-grid');
     let currentArchiveFilter = 'photos';
+    let currentCeremonieSubFilter = 'all';
+
+    // Lightbox / Visionneuse plein écran
+    const lightboxModal = document.getElementById('lightbox-modal');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCategory = document.getElementById('lightbox-category');
+    const lightboxCounter = document.getElementById('lightbox-counter');
+    const lightboxCloseBtn = document.getElementById('lightbox-close');
+    const lightboxPrevBtn = document.getElementById('lightbox-prev');
+    const lightboxNextBtn = document.getElementById('lightbox-next');
+
+    let currentLightboxGallery = [];
+    let currentLightboxIndex = 0;
+
+    function openLightbox(gallery, index) {
+        if (!lightboxModal || !gallery || gallery.length === 0) return;
+        currentLightboxGallery = gallery;
+        currentLightboxIndex = index >= 0 && index < gallery.length ? index : 0;
+        updateLightboxView();
+        lightboxModal.classList.add('active');
+        document.body.classList.add('overflow-hidden');
+    }
+
+    function closeLightbox() {
+        if (!lightboxModal) return;
+        lightboxModal.classList.remove('active');
+        document.body.classList.remove('overflow-hidden');
+    }
+
+    function updateLightboxView() {
+        const item = currentLightboxGallery[currentLightboxIndex];
+        if (!item || !lightboxImg) return;
+        lightboxImg.src = item.src;
+        lightboxImg.alt = item.folderLabel || item.badge || 'Photographie';
+        if (lightboxCategory) lightboxCategory.textContent = item.folderLabel || item.badge || 'Cérémonie';
+        if (lightboxCounter) lightboxCounter.textContent = `${currentLightboxIndex + 1} / ${currentLightboxGallery.length}`;
+    }
+
+    function nextLightbox() {
+        if (currentLightboxGallery.length <= 1) return;
+        currentLightboxIndex = (currentLightboxIndex + 1) % currentLightboxGallery.length;
+        updateLightboxView();
+    }
+
+    function prevLightbox() {
+        if (currentLightboxGallery.length <= 1) return;
+        currentLightboxIndex = (currentLightboxIndex - 1 + currentLightboxGallery.length) % currentLightboxGallery.length;
+        updateLightboxView();
+    }
+
+    if (lightboxCloseBtn) lightboxCloseBtn.addEventListener('click', closeLightbox);
+    if (lightboxPrevBtn) lightboxPrevBtn.addEventListener('click', (e) => { e.stopPropagation(); prevLightbox(); });
+    if (lightboxNextBtn) lightboxNextBtn.addEventListener('click', (e) => { e.stopPropagation(); nextLightbox(); });
+    if (lightboxModal) {
+        lightboxModal.addEventListener('click', (e) => {
+            if (e.target === lightboxModal || e.target.classList.contains('lightbox-content')) {
+                closeLightbox();
+            }
+        });
+    }
+
+    window.addEventListener('keydown', (e) => {
+        if (!lightboxModal || !lightboxModal.classList.contains('active')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowRight') nextLightbox();
+        if (e.key === 'ArrowLeft') prevLightbox();
+    });
 
     function pdfIconSvg() {
         return `
@@ -210,7 +289,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <h4 class="font-titre font-bold text-nuit text-lg mb-2">${item.title || ''}</h4>
                     <p class="font-corps text-xs text-nuit/60 leading-relaxed">${item.description || ''}</p>
                 </div>
-                <button type="button" data-pdf-download data-pdf-title="${(item.title || 'Document').replace(/"/g, 'etquot;')}" data-pdf-fichier="${item.fichier || ''}" data-pdf-size="${item.taille_lisible || ''}"
+                <button type="button" data-pdf-download data-pdf-title="${(item.title || 'Document').replace(/"/g, '&quot;')}" data-pdf-fichier="${item.fichier || ''}" data-pdf-size="${item.taille_lisible || ''}"
                     class="btn-contour mt-6 flex items-center justify-center gap-2 px-4 py-2.5 rounded text-xs text-center">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -223,16 +302,110 @@ document.addEventListener('DOMContentLoaded', () => {
         return wrapper;
     }
 
+    function renderCeremonieGallery() {
+        if (!archivesGrid) return;
+        archivesGrid.className = 'w-full mb-20';
+        archivesGrid.innerHTML = '';
+
+        const container = document.createElement('div');
+        container.className = 'w-full';
+
+        const counts = {
+            all: siteData.ceremonie.length,
+            arriver: siteData.ceremonie.filter(i => i.folder === 'arriver').length,
+            ceremonie: siteData.ceremonie.filter(i => i.folder === 'ceremonie').length,
+            ceremonie2: siteData.ceremonie.filter(i => i.folder === 'ceremonie2').length,
+            hotel: siteData.ceremonie.filter(i => i.folder === 'hotel').length
+        };
+
+        // Navigation secondaire fluide
+        const subnav = document.createElement('div');
+        subnav.className = 'ceremonie-subnav';
+
+        const subfilters = [
+            { key: 'all', label: `Toute la cérémonie (${counts.all})` },
+            { key: 'arriver', label: `1. Arrivée (${counts.arriver})` },
+            { key: 'ceremonie', label: `2. Cérémonie (${counts.ceremonie})` },
+            { key: 'ceremonie2', label: `3. Hommages (${counts.ceremonie2})` },
+            { key: 'hotel', label: `4. Hôtel Ténéré (${counts.hotel})` }
+        ];
+
+        subfilters.forEach(sf => {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = `ceremonie-subnav-btn ${currentCeremonieSubFilter === sf.key ? 'actif' : ''}`;
+            btn.textContent = sf.label;
+            btn.addEventListener('click', () => {
+                currentCeremonieSubFilter = sf.key;
+                renderCeremonieGallery();
+            });
+            subnav.appendChild(btn);
+        });
+
+        container.appendChild(subnav);
+
+        // Images ordonnées : arriver -> ceremonie -> ceremonie2 -> hotel
+        const filteredImages = currentCeremonieSubFilter === 'all'
+            ? siteData.ceremonie
+            : siteData.ceremonie.filter(i => i.folder === currentCeremonieSubFilter);
+
+        const puzzleContainer = document.createElement('div');
+        puzzleContainer.className = 'galerie-puzzle-container';
+
+        filteredImages.forEach((imgItem, idx) => {
+            const puzzleCard = document.createElement('div');
+            puzzleCard.className = 'puzzle-item scroll-reveal visible';
+            puzzleCard.innerHTML = `
+                <img src="${imgItem.src}" alt="${imgItem.folderLabel}" loading="lazy" />
+                <div class="puzzle-overlay">
+                    <span class="badge-or self-start mb-1 text-[10px]">${imgItem.folderLabel}</span>
+                    <span class="text-[11px] text-or-clair flex items-center gap-1 font-semibold">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                        </svg>
+                        Agrandir (Photo ${idx + 1}/${filteredImages.length})
+                    </span>
+                </div>
+            `;
+            puzzleCard.addEventListener('click', () => {
+                openLightbox(filteredImages, idx);
+            });
+            puzzleContainer.appendChild(puzzleCard);
+        });
+
+        container.appendChild(puzzleContainer);
+        archivesGrid.appendChild(container);
+    }
+
     function renderArchives() {
         if (!archivesGrid) return;
+
+        if (currentArchiveFilter === 'ceremonie') {
+            renderCeremonieGallery();
+            return;
+        }
+
+        archivesGrid.className = 'grid grid-cols-1 md:grid-cols-3 gap-8 mb-20';
         archivesGrid.innerHTML = '';
 
         const items = siteData.archives.filter((item) => {
             return currentArchiveFilter === 'all' || item.category === currentArchiveFilter;
         });
 
+        const photoList = items.filter(i => i.type === 'image');
+
         items.forEach((item) => {
-            archivesGrid.appendChild(renderArchiveCard(item));
+            const card = renderArchiveCard(item);
+            if (item.type === 'image') {
+                const imgEl = card.querySelector('img');
+                if (imgEl) {
+                    imgEl.addEventListener('click', () => {
+                        const idx = photoList.findIndex(p => p.src === item.src);
+                        openLightbox(photoList, idx >= 0 ? idx : 0);
+                    });
+                }
+            }
+            archivesGrid.appendChild(card);
         });
 
         // Bind download buttons rendered dynamically

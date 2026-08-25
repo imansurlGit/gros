@@ -387,7 +387,7 @@
             département de Téra, est une figure emblématique de l'histoire
             économique et sociale du Niger. Autodidacte, travailleur
             infatigable, visionnaire et profondément attaché aux valeurs
-            songhay, il a marqué son époque par son intelligence des affaires,
+            songhaï, il a marqué son époque par son intelligence des affaires,
             son patriotisme et sa capacité à rassembler.
           </p>
         </div>
@@ -407,7 +407,7 @@
               </h2>
               <div class="font-corps text-nuit/70 space-y-4 leading-relaxed text-sm sm:text-base">
                 <p>
-                  Issu de la communauté Songhay, il grandit dans un
+                  Issu de la communauté songhaï, il grandit dans un
                   environnement où la dignité, l'honneur, la solidarité et le
                   respect de la parole donnée étaient des valeurs cardinales.
                   Sous la protection de ses deux grands frères, le vétérinaire
@@ -970,6 +970,9 @@
           <button data-filter="photos" class="filtre-archives actif" id="filtre-photos">
             Photos
           </button>
+          <button data-filter="ceremonie" class="filtre-archives" id="filtre-ceremonie">
+            Cérémonie
+          </button>
           <button data-filter="documents" class="filtre-archives" id="filtre-docs">
             Documents
           </button>
@@ -1276,6 +1279,32 @@
       </div>
     </div>
   </footer>
+
+  <!-- Lightbox Modal pour Galerie Plein Écran -->
+  <div id="lightbox-modal" class="lightbox-modal" aria-hidden="true" role="dialog">
+    <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Fermer">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+    <button type="button" class="lightbox-nav-btn lightbox-prev" id="lightbox-prev" aria-label="Image précédente">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+    <button type="button" class="lightbox-nav-btn lightbox-next" id="lightbox-next" aria-label="Image suivante">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+    <div class="lightbox-content">
+      <img id="lightbox-img" class="lightbox-image" src="" alt="Agrandissement" />
+      <div class="lightbox-caption">
+        <span id="lightbox-category" class="badge-or mr-2"></span>
+        <span id="lightbox-counter" class="text-xs text-ivoire/70"></span>
+      </div>
+    </div>
+  </div>
 
   <!-- Script applicatif -->
   <script src="app.js"></script>

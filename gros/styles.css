@@ -556,3 +556,243 @@ h6,
   transform: scale(1.25);
   box-shadow: 0 0 0 3px var(--or-10);
 }
+
+/* -------------------------------------------------------
+   GALERIE PUZZLE / MASONRY (Cérémonie & Archives)
+   ------------------------------------------------------- */
+.galerie-puzzle-container {
+  column-count: 1;
+  column-gap: 1.25rem;
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .galerie-puzzle-container {
+    column-count: 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .galerie-puzzle-container {
+    column-count: 3;
+  }
+}
+
+@media (min-width: 1280px) {
+  .galerie-puzzle-container {
+    column-count: 4;
+  }
+}
+
+.puzzle-item {
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+  margin-bottom: 1.25rem;
+  position: relative;
+  border-radius: 0.85rem;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid var(--or-25);
+  box-shadow: 0 4px 16px -4px rgba(110, 0, 0, 0.06);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.3s ease;
+  cursor: zoom-in;
+  display: block;
+}
+
+.puzzle-item:hover {
+  transform: translateY(-5px) scale(1.015);
+  box-shadow: 0 16px 36px -8px rgba(212, 175, 55, 0.3), 0 6px 20px -4px rgba(110, 0, 0, 0.12);
+  border-color: var(--or);
+  z-index: 10;
+}
+
+.puzzle-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
+  background-color: var(--ivoire-sombre);
+}
+
+.puzzle-item:hover img {
+  transform: scale(1.04);
+}
+
+.puzzle-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(110, 0, 0, 0.88) 0%, rgba(110, 0, 0, 0.25) 50%, transparent 100%);
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.25rem;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.puzzle-item:hover .puzzle-overlay {
+  opacity: 1;
+}
+
+.ceremonie-subnav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.ceremonie-subnav-btn {
+  font-family: var(--font-corps);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--bleu-nuit);
+  background: var(--ivoire-ombre);
+  border: 1px solid var(--or-25);
+  padding: 0.4rem 1rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.ceremonie-subnav-btn:hover,
+.ceremonie-subnav-btn.actif {
+  background: var(--or);
+  border-color: var(--or);
+  color: var(--bleu-nuit);
+  font-weight: 700;
+  box-shadow: 0 2px 10px var(--or-25);
+}
+
+/* Section Header Separator */
+.ceremonie-section-header {
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+  column-span: all;
+  margin: 2.5rem 0 1.5rem 0;
+  text-align: center;
+}
+
+/* Lightbox Modal */
+.lightbox-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 2, 2, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.lightbox-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 92vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+.lightbox-image {
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 0.5rem;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 0 1px var(--or-50);
+  transition: transform 0.3s ease;
+}
+
+.lightbox-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(110, 0, 0, 0.7);
+  border: 1px solid var(--or-50);
+  color: #ffffff;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 100000;
+}
+
+.lightbox-nav-btn:hover {
+  background: var(--or);
+  color: var(--bleu-nuit);
+  border-color: var(--or-clair);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.lightbox-prev {
+  left: 1.5rem;
+}
+
+.lightbox-next {
+  right: 1.5rem;
+}
+
+@media (max-width: 640px) {
+  .lightbox-prev {
+    left: 0.5rem;
+  }
+  .lightbox-next {
+    right: 0.5rem;
+  }
+  .lightbox-nav-btn {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: rgba(110, 0, 0, 0.7);
+  border: 1px solid var(--or-50);
+  color: #ffffff;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 100000;
+}
+
+.lightbox-close:hover {
+  background: var(--or);
+  color: var(--bleu-nuit);
+  transform: scale(1.1) rotate(90deg);
+}
+
+.lightbox-caption {
+  margin-top: 1rem;
+  text-align: center;
+  color: var(--ivoire);
+  font-family: var(--font-corps);
+  font-size: 0.85rem;
+}
+

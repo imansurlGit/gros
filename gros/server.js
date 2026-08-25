@@ -66,9 +66,18 @@ app.get('/api/data', (req, res) => {
       ? db.testimonials.filter(item => item.is_valid === true)
       : [];
 
+    let ceremonie = [];
+    const ceremoniePath = path.join(__dirname, 'ceremonie-data.json');
+    if (fs.existsSync(ceremoniePath)) {
+      try {
+        ceremonie = JSON.parse(fs.readFileSync(ceremoniePath, 'utf8'));
+      } catch (_) {}
+    }
+
     res.json({
       livret: db.livret || null,
       archives: db.archives || [],
+      ceremonie: ceremonie,
       testimonials: safeTestimonials
     });
   } catch (err) {

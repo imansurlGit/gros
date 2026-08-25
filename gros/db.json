@@ -76,24 +76,6 @@
       "title": "Livret",
       "description": "Le document officiel relatant la biographie, les œuvres et les valeurs d'Elhadj MOUSSA-GROS Ibrahim.",
       "fichier": "assets/livret-moussa-gros.pdf"
-    },
-    {
-      "id": "arc-005",
-      "category": "documents",
-      "type": "pdf",
-      "badge": "Document PDF",
-      "title": "Baptême de Rue — Juin 2026",
-      "description": "Note d'information et dossier de presse relatifs à la cérémonie officielle de baptême de la Rue MOUSSA-GROS.",
-      "fichier": "assets/communique-bapteme-rue.pdf"
-    },
-    {
-      "id": "arc-006",
-      "category": "documents",
-      "type": "pdf",
-      "badge": "Document PDF",
-      "title": "Arrêté n°17/MJC/A/S/SG/DGCA",
-      "description": "Arrêté du 25 janvier 2024 portant création de la commission de baptême des rues de la Ville de Niamey.",
-      "fichier": "assets/arrete-commission-bapteme.pdf"
     }
   ],
   "testimonials": [
