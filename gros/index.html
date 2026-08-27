@@ -1282,7 +1282,12 @@
 
   <!-- Lightbox Modal pour Galerie Plein Écran -->
   <div id="lightbox-modal" class="lightbox-modal" aria-hidden="true" role="dialog">
-    <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Fermer">
+    <button type="button" class="lightbox-action-btn lightbox-download" id="lightbox-download" aria-label="Télécharger la photo" title="Télécharger la photo">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+      </svg>
+    </button>
+    <button type="button" class="lightbox-action-btn lightbox-close" id="lightbox-close" aria-label="Fermer" title="Fermer">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
       </svg>

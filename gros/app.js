@@ -188,6 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const lightboxCategory = document.getElementById('lightbox-category');
     const lightboxCounter = document.getElementById('lightbox-counter');
     const lightboxCloseBtn = document.getElementById('lightbox-close');
+    const lightboxDownloadBtn = document.getElementById('lightbox-download');
     const lightboxPrevBtn = document.getElementById('lightbox-prev');
     const lightboxNextBtn = document.getElementById('lightbox-next');
 
@@ -231,6 +232,35 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (lightboxCloseBtn) lightboxCloseBtn.addEventListener('click', closeLightbox);
+    if (lightboxDownloadBtn) {
+        lightboxDownloadBtn.addEventListener('click', async (e) => {
+            e.stopPropagation();
+            const item = currentLightboxGallery[currentLightboxIndex];
+            if (!item || !item.src) return;
+            try {
+                const response = await fetch(item.src);
+                if (!response.ok) throw new Error('Image non accessible.');
+                const blob = await response.blob();
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                const filename = item.filename || item.src.split('/').pop() || 'photo-patrimoine.jpg';
+                a.download = filename;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            } catch (err) {
+                const a = document.createElement('a');
+                a.href = item.src;
+                a.download = item.src.split('/').pop() || 'photo-patrimoine.jpg';
+                a.target = '_blank';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            }
+        });
+    }
     if (lightboxPrevBtn) lightboxPrevBtn.addEventListener('click', (e) => { e.stopPropagation(); prevLightbox(); });
     if (lightboxNextBtn) lightboxNextBtn.addEventListener('click', (e) => { e.stopPropagation(); nextLightbox(); });
     if (lightboxModal) {
